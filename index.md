@@ -554,7 +554,7 @@ pi@raspberrypi:~ $ sudo pip install adafruit_python_dht
 Servidores y Bases de Datos con Raspberry
 ==========================================
 
-# Control de la Raspberry pi a través de una página web.
+## Control de la Raspberry pi a través de una página web.
 
 El proyecto que se implementará consiste en el monitoreo de sensores y control de actuadores mediante la interfaz de una página web.
 
