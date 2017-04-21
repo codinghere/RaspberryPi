@@ -15,7 +15,7 @@ Taller de Raspberry
 Introducción al Raspberry Pi
 ===========================
 
-![](img/anio.jpg)
+![](img/intro/anio.jpg)
 
 ##	¿Qué es un Raspberry pi?
 
@@ -23,7 +23,7 @@ Introducción al Raspberry Pi
 2. Nació para estimular la enseñanza de ciencias de la computación en las escuelas del Reino Unido( plataforma educativa).
 3. Actualmente es una plataforma de desarrollo.
 
-![](img/proyectos.jpg)
+![](img/intro/proyectos.jpg)
 
 #### Recursos
 
@@ -48,25 +48,25 @@ Introducción al Raspberry Pi
 #### Modelos
 
 ##### RPI 1 Modelo A
-<img  src="img/ModelA.png" width="500" alt=""/>
+<img  src="img/intro/ModelA.png" width="500" alt=""/>
 
 ##### RPI 1 Modelo A+
-<img  src="img/ModelA+.png" width="500" alt=""/>
+<img  src="img/intro/ModelA+.png" width="500" alt=""/>
 
 ##### RPI 1 Modelo B
-<img  src="img/ModelB.png" width="500" alt=""/>
+<img  src="img/intro/ModelB.png" width="500" alt=""/>
 
 ##### RPI 1 Modelo B+
-<img  src="img/ModelB+.jpg" width="500" alt=""/>
+<img  src="img/intro/ModelB+.jpg" width="500" alt=""/>
 
 ##### RPI 2 Modelo B
-<img  src="img/Model2B.jpeg" width="500" alt=""/>
+<img  src="img/intro/Model2B.jpeg" width="500" alt=""/>
 
 ##### RPI ZERO
-<img  src="img/modelzero.jpg" width="500">
+<img  src="img/intro/modelzero.jpg" width="500">
 
 ##### RPI 3 Modelo B
-<img  src="img/model3.jpg" width="500" alt=""/>
+<img  src="img/intro/model3.jpg" width="500" alt=""/>
 
 
 |               |RPI 1 Model A		|RPI 1 Model A+	 	|RPI 1 Model B		|RPI 1 Model B+	|RPI Model 2 Model B| RPI Zero| RPI 3 Model B|
