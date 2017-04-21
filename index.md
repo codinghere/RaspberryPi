@@ -1,5 +1,3 @@
-{% include header.html %}
-
 Introducción al Raspberry Pi
 ===========================
 
