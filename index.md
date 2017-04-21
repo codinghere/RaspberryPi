@@ -1392,3 +1392,615 @@ Para los alumnos del curso es necesario ejecutar los siguientes comandos:
 
 - https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-14-04
 - http://blog.scphillips.com/posts/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
+
+
+
+
+## Clientes
+
+### Python
+
+#### GET method:
+
+```python
+import requests
+import datetime
+
+url = 'http://192.168.2.9/api/sensors/'
+
+response = requests.get(url)
+assert response.status_code == 200
+
+for data in response.json():
+    date = datetime.datetime.strptime(data['date_created'][:-1], "%Y-%m-%dT%H:%M:%S.%f")
+    humidity = data['humidity']
+    temperature = data['temperature']
+    print("Fecha: {}, Humedad: {}, Temperatura: {}".format(date, humidity, temperature))
+    
+```
+
+#### POST method:
+
+```python
+import requests
+import datetime
+import json
+import time
+
+url = 'http://192.168.2.9/api/sensors/'
+
+ for i in range(100):
+	date = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+
+	headers = {'Content-type': 'application/json'}
+	response = requests.post(url,  data =json.dumps({'date_created': date,'temperature': 11.1, 'humidity': 10.1}), headers=headers)
+	assert response.status_code == 201
+	time.sleep(0.1)
+	
+```
+
+### ESP8266
+
+Para realizar esta parte es necesario tener instalado las herramientas necesarias para compilar y quemar el *ESP8266*
+
+#### esp8266-restclient [link](https://github.com/csquared/arduino-restclient) 
+
+```console
+cd ~/Documents/Arduino
+mkdir libraries
+cd libraries
+git clone https://github.com/dakaz/esp8266-restclient.git RestClient
+```
+
+#### SimpleDHT [link](https://github.com/winlinvip/SimpleDHT)
+
+```console
+cd ~/Documents/Arduino
+mkdir libraries
+cd libraries
+git clone https://github.com/winlinvip/SimpleDHT.git SimpleDHT
+```
+
+Código del cliente:
+
+```cpp
+#include <RestClient.h>
+#include <ESP8266WiFi.h>
+#include <SimpleDHT.h>
+
+
+const char* ssid     = "{your ssid}";
+const char* password = "{your password}";
+
+const char* host = "{your ip or domain}";
+
+RestClient client = RestClient(host);
+
+int pinDHT11 = 2;
+SimpleDHT11 dht11;
+
+void setup() {
+    Serial.begin(115200);
+    delay(10);
+    client.setContentType("application/json");
+    // We start by connecting to a WiFi network
+    
+    Serial.println();
+    Serial.println();
+    Serial.print("Connecting to ");
+    Serial.println(ssid);
+    
+    /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
+     would try to act as both a client and an access-point and could cause
+     network-issues with your other WiFi-devices on your WiFi-network. */
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(ssid, password);
+    
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+}
+
+String response;
+char buffer[50];
+void loop(){
+    byte temperature = 0;
+    byte humidity = 0;
+    if (dht11.read(pinDHT11, &temperature, &humidity, NULL)) {
+        Serial.print("Read DHT11 failed.");
+        return;
+    }
+    
+    response = "";
+    sprintf (buffer, "{\"temperature\": %d, \"humidity\": %d}",(int)temperature, (int)humidity);
+    int statusCode = client.post("/api/sensors/", buffer , &response);
+    if(statusCode == 201){;
+        Serial.println(response);
+    }
+    delay(2000);
+}
+```
+
+### Robot Móvil:
+
+Luego implementamos la clase **Car**  que se encarga de manejar los movimientos del vehículo.
+
+##### Car.py
+
+```python
+import RPi.GPIO as GPIO
+import time
+
+
+class Car:
+    def __init__(self, motorL, motorR, t=0.2):
+        """
+        Manejar los motores
+        :param pins:
+        [in1, in2, in3, in4]
+        """
+        GPIO.setmode(GPIO.BCM)
+        self._pinsA = motorL
+        self._pinsB = motorR
+        self.t = t 
+
+        for pin in (self._pinsA + self._pinsB):
+            GPIO.setup(pin, GPIO.OUT)
+
+    def motorOn(self, pins):
+        GPIO.output(pins[0], False)
+        GPIO.output(pins[1], True)
+
+    def motorOff(self, pins):
+        GPIO.output(pins[0], False)
+        GPIO.output(pins[1], False)
+
+    def motorReverse(self, pins):
+        GPIO.output(pins[0], True)
+        GPIO.output(pins[1], False)
+
+    def forward(self):
+        self.stop()
+        self.motorOn(self._pinsA)
+        self.motorOn(self._pinsB)
+        time.sleep(self.t)
+        self.stop()
+
+    def backward(self):
+        self.stop()
+        self.motorReverse(self._pinsA)
+        self.motorReverse(self._pinsB)
+        time.sleep(self.t)
+        self.stop()
+
+    def left(self):
+        self.stop()
+        self.motorOn(self._pinsB)
+        self.motorReverse(self._pinsA)
+        time.sleep(self.t)
+        self.stop()
+
+    def right(self):
+        self.stop()
+        self.motorOn(self._pinsA)
+        self.motorReverse(self._pinsB)
+        time.sleep(self.t)
+        self.stop()
+
+    def stop(self):
+        self.motorOff(self._pinsA)
+        self.motorOff(self._pinsB)
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        GPIO.cleanup()
+```
+
+
+Ahora creamos la clase **Data** que se encarga de obtener los datos, filtrar el último y verificar si este ha sido creado en menos de 1 segundo. Si cumple lo anterior obtenemos el comando  **status** y realizamos la tarea respectiva.
+
+##### main.py
+
+```python
+#!/usr/bin/env python
+from datetime import datetime, timedelta
+from Car import Car
+import requests
+import RPi.GPIO as GPIO
+import socket
+
+class Data:
+    def __init__(self, url, timeout=1):
+        self.url = url
+        self.before = None
+        self.timeout = timeout
+
+    def load(self):
+        response = requests.get(self.url)
+        s = response.headers['date']
+        u = datetime.strptime(s, "%a, %d %b %Y %H:%M:%S %Z")
+        assert response.status_code == 200
+        data = response.json()[0]
+        date = datetime.strptime(data['date_created'][:-1], "%Y-%m-%dT%H:%M:%S.%f")
+        if self.before == date:
+            return
+        self.before = date
+        # u = datetime.utcnow()
+        diff = u - date
+        if diff < timedelta(seconds=1.5):
+            return data['status']
+
+
+#http://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('10.255.255.255', 0))
+        IP = s.getsockname()[0]
+    except:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
+
+
+if __name__ == '__main__':
+    host = get_ip()
+    print(host)
+    data = Data(url='http://'+host+'/api/motors/')
+    motorL = [17, 27]
+    motorR = [23, 24]
+    car = Car(motorL, motorR, 1)
+
+    while True:
+        try:
+            resp = data.load()
+            if resp == 'F':
+                car.forward()
+            elif resp == 'B':
+                car.backward()
+            elif resp == 'L':
+                car.left()
+            elif resp == 'R':
+                car.right()
+            elif resp == 'S':
+                car.stop()
+        except (KeyboardInterrupt, SystemExit):
+	       GPIO.cleanup()
+	    break
+```
+
+```console
+pi@raspberrypi:~ $ sudo crontab -e
+```
+
+	0 * * * * (date; ls /home/pi/Monitor/*.jpg | head -n -20 | xargs rm -v) >> /tmp/ima$
+	@reboot python /home/pi/Car/main.py &
+
+
+BLUETOOTH
+=========
+
+### bluecarpy.py
+
+```python
+from bluetooth import *
+from Car import Car
+
+import os
+
+os.system("sudo hciconfig hci0 name \'raspberrypi-0\'")
+
+os.system("sudo hciconfig hci0 piscan")
+
+server_sock = BluetoothSocket(RFCOMM)
+server_sock.bind(("", PORT_ANY))
+server_sock.listen(1)
+
+port = server_sock.getsockname()[1]
+
+uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
+
+advertise_service(server_sock, "AquaPiServer",
+                  service_id=uuid,
+                  service_classes=[uuid, SERIAL_PORT_CLASS],
+                  profiles=[SERIAL_PORT_PROFILE],
+                  #                   protocols = [ OBEX_UUID ]
+                  )
+motorL = [17, 27]
+motorR = [23, 24]
+
+car = Car(motorL, motorR)
+
+while True:
+    print "Waiting for connection on RFCOMM channel %d" % port
+
+    client_sock, client_info = server_sock.accept()
+    print "Accepted connection from ", client_info
+
+    try:
+        data = client_sock.recv(1024)
+        if len(data) == 0:
+            break
+
+        if data == 'Forward':
+            car.forward()
+        elif data == 'Backward':
+            car.backward()
+        elif data == 'Left':
+            car.left()
+        elif data == 'Right':
+            car.right()
+        elif data == 'Stop':
+            car.stop()
+        else:
+            data = 'ERROR'
+        data += "!"
+        client_sock.send(data)
+    except IOError:
+        pass
+
+    except KeyboardInterrupt:
+        client_sock.close()
+        server_sock.close()
+        break
+```
+
+Añadir permiso para poder acceder al recurso de ***Bluetooth***.
+
+### AndroidManifest.xml
+
+```xml
+....
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.rpi.bluecarpi.bluecarpi">
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<application
+...
+```
+
+### activity_main.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.rpi.bluecarpi.bluecarpi.MainActivity">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|right|top|center|bottom"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="@string/forward"
+                android:id="@+id/btnForward"
+                android:layout_column="11" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="@string/left"
+                android:id="@+id/btnLeft"
+                android:layout_column="10" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stop"
+                android:id="@+id/btnStop"
+                android:layout_column="11" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rigth"
+                android:id="@+id/btnRight"
+                android:layout_column="12" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_column="12">
+
+            <Button
+                android:text="@string/backward"
+                android:id="@+id/btnBackward"
+                android:layout_column="11" />
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>
+```
+
+### MainActivity.java
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    BluetoothSocket _Socket;
+    BluetoothDevice _Device = null;
+
+    final byte delimiter = 33;
+    int readBufferPosition = 0;
+
+    public void sendBtMsg(String msg){
+        UUID uuid = UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee"); //Standard SerialPortService ID
+        try {
+
+            _Socket = _Device.createRfcommSocketToServiceRecord(uuid);
+            if (!_Socket.isConnected()){
+                _Socket.connect();
+            }
+
+            OutputStream mmOutputStream = _Socket.getOutputStream();
+            mmOutputStream.write(msg.getBytes());
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        final Handler handler = new Handler();
+
+        final Button btnBackward = (Button)findViewById(R.id.btnBackward);
+        final Button btnForward = (Button)findViewById(R.id.btnForward);
+        final Button btnLeft = (Button)findViewById(R.id.btnLeft);
+        final Button btnRight = (Button)findViewById(R.id.btnRight);
+        final Button btnStop = (Button)findViewById(R.id.btnStop);
+
+        final BluetoothAdapter _bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        final class workerThread implements Runnable{
+
+            private String btMsg;
+
+            public workerThread(String msg){
+                btMsg = msg;
+            }
+
+            @Override
+            public void run() {
+                sendBtMsg(btMsg);
+
+                while (!Thread.currentThread().isInterrupted()){
+                    int bytesAvailable;
+
+                    boolean workDone = false;
+                    try {
+
+                        final InputStream _inputStream;
+                        _inputStream = _Socket.getInputStream();
+
+                        bytesAvailable = _inputStream.available();
+
+                        if(bytesAvailable>0){
+                            byte[] packetBytes = new byte[bytesAvailable];
+                            byte[] readBuffer = new byte[1024];
+                            _inputStream.read(packetBytes);
+
+                            for(int i=0; i<bytesAvailable; i++){
+                                byte b=packetBytes[i];
+                                if(b==delimiter){
+                                    byte[] encodedBytes = new byte[readBufferPosition];
+                                    System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
+                                    final String data = new String(encodedBytes, "US-ASCII");
+                                    readBufferPosition = 0;
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+
+                                        }
+                                    });
+                                    workDone = true;
+                                    break;
+                                }
+                                else {
+                                    readBuffer[readBufferPosition++] = b;
+                                }
+                            }
+
+                            if(workDone){
+                                _Socket.close();
+                                break;
+                            }
+                        }
+                    }
+                    catch (IOException e){
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }
+
+
+        assert btnForward != null;
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                (new Thread(new workerThread("Forward"))).start();
+            }
+        });
+
+        assert btnBackward != null;
+        btnBackward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                (new Thread(new workerThread("Backward"))).start();
+            }
+        });
+
+        assert btnLeft != null;
+        btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                (new Thread(new workerThread("Left"))).start();
+            }
+        });
+
+        assert btnRight != null;
+        btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                (new Thread(new workerThread("Right"))).start();
+            }
+        });
+
+        assert btnStop != null;
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                (new Thread(new workerThread("Stop"))).start();
+            }
+        });
+
+        if(!_bluetoothAdapter.isEnabled()){
+            Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBluetooth, 0);
+        }
+
+        Set<BluetoothDevice> pairedDevice = _bluetoothAdapter.getBondedDevices();
+
+        if(pairedDevice.size() > 0){
+            for (BluetoothDevice device:pairedDevice){
+                if(device.getName().equals("raspberrypi-0")){
+                    _Device = device;
+                }
+            }
+        }
+    }
+
+
+}
+```
