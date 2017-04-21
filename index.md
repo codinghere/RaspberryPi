@@ -881,7 +881,9 @@ urlpatterns = [
 **templates/index.html**
 
 ```html
-{ % load static % }
+{% raw %}
+{% load static %}
+{% endraw %}
 <!DOCTYPE html>
 <html>
 <head>
