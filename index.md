@@ -126,7 +126,7 @@ $ scp your_archivo pi@your.rpi.ip.address:"/home/pi"
 2. una memoría microSD de al menos 4Gb (recomiendo que sea de clase 10)
 3. software para grabar el SO en la memoria microSD, en este caso optaremos por Win32DiskImager
 
-El usuario por defecto es **pi** y la contraseña **raspberry**
+El usuario por defecto es `pi` y la contraseña `raspberry`
 
 ### Primera conexión:
 
