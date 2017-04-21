@@ -881,7 +881,6 @@ urlpatterns = [
 **templates/index.html**
 
 ```html
-\{% load static %\}
 <!DOCTYPE html>
 <html>
 <head>
