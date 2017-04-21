@@ -1,3 +1,5 @@
+{% include archive-single.html %}
+
 Introducción al Raspberry Pi
 ===========================
 
