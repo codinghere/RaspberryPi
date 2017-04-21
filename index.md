@@ -1,4 +1,4 @@
-{% include archive-single.html %}
+{% include header.html %}
 
 Introducción al Raspberry Pi
 ===========================
