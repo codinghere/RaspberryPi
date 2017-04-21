@@ -932,10 +932,10 @@ urlpatterns = [
     </div>
 </div>
 </body>
-<script type="text/javascript" src=" static 'vendor/jquery.min.js' "></script>
-<script type="text/javascript" src="  static 'vendor/plotly-latest.min.js' "></script>
-<script type="text/javascript" src="  static 'js/sensors.js' "> </script>
-<script type="text/javascript" src="  static 'js/motors.js' "> </script>
+<script type="text/javascript" src="{ static 'vendor/jquery.min.js' }"></script>
+<script type="text/javascript" src="{ static 'vendor/plotly-latest.min.js' }"></script>
+<script type="text/javascript" src="{ static 'js/sensors.js' }"> </script>
+<script type="text/javascript" src="{ static 'js/motors.js' }"> </script>
 </html>
 ```
 
