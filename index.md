@@ -236,15 +236,17 @@ Algunos de los miles de comandos de linux!!!
 | Comando 	|Función 			| Uso 								|
 |-----------|-------------------|-----------------------------------
 |man 		|manual  			| ``$ man man``						|
-|ls 		|listing 			| ``$ ls /home/pi``					|
-|cd 		|change directory	| ``$ cd ..``						|
-|mv 		|move 				|``$ mv carpeta1 carpeta2``			|
-|rm 		|remove 			|``$ rm archivo.txt``				|
-|rmdir 		|remove directory 	|``$ rmdir carpeta``				|
-|mkdir 		|make directory 	|``$ mkdir carpeta``				|
-|cp 		|copy 				|``$ cp archivo1.txt archivo2.txt``	|
-|find 		|find 				|``$ find archivo.txt``				|
-|locate 	|locate 			|``$ locate archivo.txt``			|
+|ls 		|ver los ficheros de un directorio	| ``$ ls /home/pi``					|
+|cd 		| Cambiar de directorio	| ``$ cd ..``						|
+|mv          | Mover archivos	|``$ mv carpeta1 carpeta2``			|
+|rm 		| Remover 			|``$ rm archivo.txt``				|
+|rmdir 		|remover directorio 	|``$ rmdir carpeta``				|
+|mkdir 		|Crear directorio 	|``$ mkdir carpeta``				|
+|cp 		|Copiar 				|``$ cp archivo1.txt archivo2.txt``	|
+|find 		|Buscar 				|``$ find archivo.txt``				|
+|locate 	|Localizar 			|``$ locate archivo.txt``			|
+|shutdown  | Apagar el sistema |``$ shutdown -h now``|
+|reboot | Reiniciar| `$ reboot`|
 
 ##	Uso del editor Nano
 ```sh
