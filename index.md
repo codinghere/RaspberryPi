@@ -4,11 +4,11 @@ Taller de Raspberry
 
 ## Tabla de contenidos
 
-1. [Introducción al Raspberry Pi](Introduction)
+1. [Introducción al Raspberry Pi](#introducción-al-raspberry-pi)
 2. [Manejo de los GPIO's](#python)
-3. [Web I](server)
-4. [Web II](client)
-5. [Bluetooth](bluetooth)
+3. [Web I](#servidores-y-bases-de-datos-con-raspberry)
+4. [Web II](#clientes)
+5. [Bluetooth](#bluetooth)
 
 
 Introducción al Raspberry Pi
