@@ -373,9 +373,9 @@ GPIO.setmode(GPIO.BCM) # mode BCM or Board
 GPIO.setup(led, GPIO.OUT) # input or output
 while True:
 	GPIO.output(led, True)
-    time.sleep(delay)
-    GPIO.output(led, False)
-    time.sleep(delay)
+	time.sleep(delay)
+	GPIO.output(led, False)
+	time.sleep(delay)
 ```
 
 ![](img/GPIO/led.png "Led")
