@@ -1723,16 +1723,6 @@ Para los alumnos del curso es necesario ejecutar los siguientes comandos:
 	sudo apt-get install -y motion
 
 
-
-
-```console
-pi@raspberrypi:~ $ sudo crontab -e
-```
-
-	0 * * * * (date; ls /home/pi/Monitor/*.jpg | head -n -20 | xargs rm -v) >> /tmp/ima$
-	@reboot python /home/pi/Car/main.py &
-
-
 BLUETOOTH
 =========
 
