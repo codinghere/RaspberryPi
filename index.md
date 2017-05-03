@@ -361,7 +361,7 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 
 ![](img/GPIO/led2.png)
 
-#### Blink
+#### [Blink](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/blink.py) 
 ```python
 #!/usr/bin/python
 import RPi.GPIO as GPIO
