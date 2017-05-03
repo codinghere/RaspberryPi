@@ -6,9 +6,8 @@ Taller de Raspberry
 
 1. [Introducción al Raspberry Pi](#introducción-al-raspberry-pi)
 2. [Manejo de los GPIO's](#manejo-de-los-gpios)
-3. [Web I](#servidores-y-bases-de-datos-con-raspberry)
-4. [Web II](#clientes)
-5. [Bluetooth](#bluetooth)
+3. [Robot Móvil con Sensor de Temperatura y Humedad](#servidores-y-bases-de-datos-con-raspberry)
+4. [Bluetooth](#bluetooth)
 
 
 Introducción al Raspberry Pi
@@ -592,7 +591,7 @@ pi@raspberrypi:~ $ sudo pip install adafruit_python_dht
 ```
 
 
-Servidores y Bases de Datos con Raspberry
+Robot Móvil con Sensor de Temperatura y Humedad
 ==========================================
 
 ## Control de la Raspberry pi a través de una página web.
