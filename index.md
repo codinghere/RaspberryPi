@@ -604,7 +604,9 @@ En la siguiente imagen se muestra un esquema simple de la aplicación, esta se c
 
 3. **Control de Motores:** Control de los motores
 
-4. **Otros Clientes**
+4. **Otros Clientes:** Ejemplos de Posibles clientes
+
+5. **Motion:** Coniguramos motion para mostar la imagen de la cámara a traves de la interfaz web.
 
 Esta arquitectura tiene como cualidad de ser simple y escalable.
 
@@ -1554,90 +1556,12 @@ url = 'http://192.168.2.9/api/sensors/'
 	time.sleep(0.1)
 ```
 
-### Configuración de motion
 
-Creamos un directorio para guardar las imagenes:
-
-```console
-pi@raspberrypi:~ $ mkdir  /home/pi/Monitor
-pi@raspberrypi:~ $ sudo chgrp motion /home/pi/Monitor
-pi@raspberrypi:~ $ sudo chmod g+rwx /home/pi/Monitor
-pi@raspberrypi:~ $ sudo chmod -R g+w /home/pi/Monitor/
-```
-Instalamos la librería **motion**.
-
-```console
-pi@raspberrypi:~ $ sudo apt-get install -y motion
-```
-Editamos el archivo motion.conf, buscando los siguientes campos y los cambiamos a lo siguientes valores:
-
-```console
-pi@raspberrypi:~ $ sudo nano /etc/motion/motion.conf
-```
-
-	stream_localhost off
-	webcontrol_localhost off
-	framerate 60
-	target_dir /home/pi/Monitor
-
-	
-Editamos el archivo **/etc/default/motion** y cambiamos de **no** a **yes**
-
-```console
-pi@raspberrypi:~ $ sudo nano /etc/default/motion
-```
-	start_motion_daemon=yes
-
-Despues ejecutamos lo siguiente:
-
-```console
-pi@raspberrypi:~ $ sudo service motion stop
-pi@raspberrypi:~ $ sudo service motion start
-```
-	
-Y Accedemos a la imagen de la cámara a traves de la url desde nuestro buscador: http://{your-rpi-address}:8081/ 
-
-Obteniendo lo siguiente:
-
-![](img/server/Screenshot.png) 
-
-
-Las imagenes y videos pueden llenar el almacenamiento, por ello configuramos que pasada los 15 minutos despues de cada hora borre todos excepto las 20 ultimas imagenes:
-
-```console
-pi@raspberrypi:~ $ sudo crontab -e
-```
-
-
-	15 * * * * (date; ls /home/pi/Monitor/*.jpg | head -n -20 | xargs rm -v) >> /tmp/images_deleted 2>&1
-
-
-## Resumen
-
-Para los alumnos del curso es necesario ejecutar los siguientes comandos:
-
-	sudo apt-get -y update
-	sudo apt-get -y upgrade
-	sudo apt-get install -y python-dev
-	sudo apt-get install -y python-rpi.gpio
-	sudo apt-get install -y python-pip
-	sudo pip install adafruit_python_dht
-	sudo pip install virtualenv
-	mkdir ~/projects
-	cd ~/projects
-	virtualenv rpi-env
-	source rpi-env/bin/activate
-	pip install django
-	pip install djangorestframework
-	sudo apt-get install -y apache2 libapache2-mod-wsgi
-	sudo apt-get install -y motion
-
-
-### ESP8266
+## ESP8266
 
 Para realizar esta parte es necesario tener instalado las herramientas necesarias para compilar y quemar el *ESP8266*
 
-#### esp8266-restclient [link](https://github.com/csquared/arduino-restclient) 
+### esp8266-restclient [link](https://github.com/csquared/arduino-restclient) 
 
 ```console
 cd ~/Documents/Arduino
@@ -1646,7 +1570,7 @@ cd libraries
 git clone https://github.com/dakaz/esp8266-restclient.git RestClient
 ```
 
-#### SimpleDHT [link](https://github.com/winlinvip/SimpleDHT)
+### SimpleDHT [link](https://github.com/winlinvip/SimpleDHT)
 
 ```console
 cd ~/Documents/Arduino
@@ -1720,6 +1644,86 @@ void loop(){
     delay(2000);
 }
 ```
+
+# Motion
+
+Creamos un directorio para guardar las imagenes:
+
+```console
+pi@raspberrypi:~ $ mkdir  /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chgrp motion /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chmod g+rwx /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chmod -R g+w /home/pi/Monitor/
+```
+Instalamos la librería **motion**.
+
+```console
+pi@raspberrypi:~ $ sudo apt-get install -y motion
+```
+Editamos el archivo motion.conf, buscando los siguientes campos y los cambiamos a lo siguientes valores:
+
+```console
+pi@raspberrypi:~ $ sudo nano /etc/motion/motion.conf
+```
+
+	stream_localhost off
+	webcontrol_localhost off
+	framerate 60
+	target_dir /home/pi/Monitor
+
+
+Editamos el archivo **/etc/default/motion** y cambiamos de **no** a **yes**
+
+```console
+pi@raspberrypi:~ $ sudo nano /etc/default/motion
+```
+	start_motion_daemon=yes
+
+Despues ejecutamos lo siguiente:
+
+```console
+pi@raspberrypi:~ $ sudo service motion stop
+pi@raspberrypi:~ $ sudo service motion start
+```
+	
+Y Accedemos a la imagen de la cámara a traves de la url desde nuestro buscador: http://{your-rpi-address}:8081/ 
+
+Obteniendo lo siguiente:
+
+![](img/server/Screenshot.png) 
+
+
+Las imagenes y videos pueden llenar el almacenamiento, por ello configuramos que pasada los 15 minutos despues de cada hora borre todos excepto las 20 ultimas imagenes:
+
+```console
+pi@raspberrypi:~ $ sudo crontab -e
+```
+
+	15 * * * * (date; ls /home/pi/Monitor/*.jpg | head -n -20 | xargs rm -v) >> /tmp/images_deleted 2>&1
+
+
+## Resumen
+
+Para los alumnos del curso es necesario ejecutar los siguientes comandos:
+
+	sudo apt-get -y update
+	sudo apt-get -y upgrade
+	sudo apt-get install -y python-dev
+	sudo apt-get install -y python-rpi.gpio
+	sudo apt-get install -y python-pip
+	sudo pip install adafruit_python_dht
+	sudo pip install virtualenv
+	mkdir ~/projects
+	cd ~/projects
+	virtualenv rpi-env
+	source rpi-env/bin/activate
+	pip install django
+	pip install djangorestframework
+	sudo apt-get install -y apache2 libapache2-mod-wsgi
+	sudo apt-get install -y motion
+
+
+
 
 ```console
 pi@raspberrypi:~ $ sudo crontab -e
