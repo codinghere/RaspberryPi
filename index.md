@@ -592,24 +592,26 @@ pi@raspberrypi:~ $ sudo pip install adafruit_python_dht
 
 
 Robot Móvil con Sensor de Temperatura y Humedad
-==========================================
+===============================================
 
-## Control de la Raspberry pi a través de una página web.
-
-El proyecto que se implementará consiste en el monitoreo de sensores y control de actuadores mediante la interfaz de una página web.
+El proyecto que se implementará consiste en el monitoreo de sensores y control de actuadores mediante una interfaz web.
 
 En la siguiente imagen se muestra un esquema simple de la aplicación, esta se compondrá de todas principales:
 
-1. **Aplicación WEB:** Esta se encarga de mostrar los datos guardados en la base de datos.
+1. **Aplicación WEB:** muestra los datos guardados en la base de datos.
 
-2. **Servicio o Demonio:** Este se encarga de leer los datos que proporciona los sensores y guardarlo en la base de datos.
+2. **Servicio o Demonio:** lectura de los datos que proporciona los sensores y guardarlo en la base de datos.
+
+3. **Control de Motores:** Control de los motores
+
+4. **Otros Clientes**
 
 Esta arquitectura tiene como cualidad de ser simple y escalable.
 
 ![](img/server/imagen1.png) 
 
 
-### Aplicación WEB:
+# Aplicación WEB:
 
 Para esta parte implementaremos un servicio restful.
 
@@ -1207,7 +1209,7 @@ pi@raspberrypi:~ $ sudo service apache2 restart
 
 Ahora podremos ingresar directamente a la ip sin necesidad de indicar el puerto ni ejecutar ningun comando ya que se esta ejecutando el servidor de producción.
 
-### Servicio o Demonio
+# Servicio o Demonio
 
 Creamos un archivo llamado **myservice.py**
 
@@ -1364,7 +1366,7 @@ Salida:
 ![](img/server/screencapture3.png)
 
 
-### Robot Móvil:
+# Control de Motores:
 
 Luego implementamos la clase **Car**  que se encarga de manejar los movimientos del vehículo.
 
@@ -1513,7 +1515,9 @@ if __name__ == '__main__':
 	    break
 ```
 
-#### Petición de Datos
+# Otros Clientes
+
+## Petición de Datos
 
 ```python
 import requests
@@ -1531,7 +1535,7 @@ for data in response.json():
     print("Fecha: {}, Humedad: {}, Temperatura: {}".format(date, humidity, temperature))
 ```
 
-#### Envio de Datos:
+## Envio de Datos:
 
 ```python
 import requests
