@@ -6,7 +6,7 @@ Taller de Raspberry
 
 1. [Introducción al Raspberry Pi](#introducción-al-raspberry-pi)
 2. [Manejo de los GPIO's](#manejo-de-los-gpios)
-3. [Robot Móvil con Sensor de Temperatura y Humedad](#servidores-y-bases-de-datos-con-raspberry)
+3. [Robot Móvil con Sensor de Temperatura y Humedad](#robot-móvil-con-sensor-de-temperatura-y-humedad)
 4. [Bluetooth](#bluetooth)
 
 
