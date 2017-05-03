@@ -837,7 +837,7 @@ Luego añadimos la aplicación Domo al proyecto:
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Raspberry/settings.py
 ```
 
-**Raspberry/settings.py**	
+**Raspberry/settings.py**
 ``` python
 [...]
 
@@ -853,12 +853,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # Aplicaciones de terceros
     'rest_framework',
     # Aplicaciones creadas
     'Domo',
-    
+
 ]
 
 [...]
@@ -1362,225 +1362,8 @@ pi@raspberrypi:~ $ sudo cp -rf myservice/ /usr/local/bin/
 pi@raspberrypi:~ $ sudo service myservice start
 ```
 Salida:
-![](img/server/screencapture3.png) 
-	
-### Configuración de motion
+![](img/server/screencapture3.png)
 
-Creamos un directorio para guardar las imagenes:
-
-```console
-pi@raspberrypi:~ $ mkdir  /home/pi/Monitor
-pi@raspberrypi:~ $ sudo chgrp motion /home/pi/Monitor
-pi@raspberrypi:~ $ sudo chmod g+rwx /home/pi/Monitor
-pi@raspberrypi:~ $ sudo chmod -R g+w /home/pi/Monitor/
-```
-Instalamos la librería **motion**.
-
-```console
-pi@raspberrypi:~ $ sudo apt-get install -y motion
-```
-Editamos el archivo motion.conf, buscando los siguientes campos y los cambiamos a lo siguientes valores:
-
-```console
-pi@raspberrypi:~ $ sudo nano /etc/motion/motion.conf
-```
-
-	stream_localhost off
-	webcontrol_localhost off
-	framerate 60
-	target_dir /home/pi/Monitor
-
-	
-Editamos el archivo **/etc/default/motion** y cambiamos de **no** a **yes**
-
-```console
-pi@raspberrypi:~ $ sudo nano /etc/default/motion
-```
-	start_motion_daemon=yes
-
-Despues ejecutamos lo siguiente:
-
-```console
-pi@raspberrypi:~ $ sudo service motion stop
-pi@raspberrypi:~ $ sudo service motion start
-```
-	
-Y Accedemos a la imagen de la cámara a traves de la url desde nuestro buscador: http://{your-rpi-address}:8081/ 
-
-Obteniendo lo siguiente:
-
-![](img/server/Screenshot.png) 
-
-
-Las imagenes y videos pueden llenar el almacenamiento, por ello configuramos que pasada los 15 minutos despues de cada hora borre todos excepto las 20 ultimas imagenes:
-
-```console
-pi@raspberrypi:~ $ sudo crontab -e
-```
-
-
-	15 * * * * (date; ls /home/pi/Monitor/*.jpg | head -n -20 | xargs rm -v) >> /tmp/images_deleted 2>&1
-
-
-## Resumen
-
-Para los alumnos del curso es necesario ejecutar los siguientes comandos:
-
-	sudo apt-get -y update
-	sudo apt-get -y upgrade
-	sudo apt-get install -y python-dev
-	sudo apt-get install -y python-rpi.gpio
-	sudo apt-get install -y python-pip
-	sudo pip install adafruit_python_dht
-	sudo pip install virtualenv
-	mkdir ~/projects
-	cd ~/projects
-	virtualenv rpi-env
-	source rpi-env/bin/activate
-	pip install django
-	pip install djangorestframework
-	sudo apt-get install -y apache2 libapache2-mod-wsgi
-	sudo apt-get install -y motion
-
-	
-#### Fuente
-
-- https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-14-04
-- http://blog.scphillips.com/posts/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
-
-
-
-
-## Clientes
-
-### Python
-
-#### GET method:
-
-```python
-import requests
-import datetime
-
-url = 'http://192.168.2.9/api/sensors/'
-
-response = requests.get(url)
-assert response.status_code == 200
-
-for data in response.json():
-    date = datetime.datetime.strptime(data['date_created'][:-1], "%Y-%m-%dT%H:%M:%S.%f")
-    humidity = data['humidity']
-    temperature = data['temperature']
-    print("Fecha: {}, Humedad: {}, Temperatura: {}".format(date, humidity, temperature))
-    
-```
-
-#### POST method:
-
-```python
-import requests
-import datetime
-import json
-import time
-
-url = 'http://192.168.2.9/api/sensors/'
-
- for i in range(100):
-	date = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ')
-
-	headers = {'Content-type': 'application/json'}
-	response = requests.post(url,  data =json.dumps({'date_created': date,'temperature': 11.1, 'humidity': 10.1}), headers=headers)
-	assert response.status_code == 201
-	time.sleep(0.1)
-	
-```
-
-### ESP8266
-
-Para realizar esta parte es necesario tener instalado las herramientas necesarias para compilar y quemar el *ESP8266*
-
-#### esp8266-restclient [link](https://github.com/csquared/arduino-restclient) 
-
-```console
-cd ~/Documents/Arduino
-mkdir libraries
-cd libraries
-git clone https://github.com/dakaz/esp8266-restclient.git RestClient
-```
-
-#### SimpleDHT [link](https://github.com/winlinvip/SimpleDHT)
-
-```console
-cd ~/Documents/Arduino
-mkdir libraries
-cd libraries
-git clone https://github.com/winlinvip/SimpleDHT.git SimpleDHT
-```
-
-Código del cliente:
-
-```cpp
-#include <RestClient.h>
-#include <ESP8266WiFi.h>
-#include <SimpleDHT.h>
-
-
-const char* ssid     = "{your ssid}";
-const char* password = "{your password}";
-
-const char* host = "{your ip or domain}";
-
-RestClient client = RestClient(host);
-
-int pinDHT11 = 2;
-SimpleDHT11 dht11;
-
-void setup() {
-    Serial.begin(115200);
-    delay(10);
-    client.setContentType("application/json");
-    // We start by connecting to a WiFi network
-    
-    Serial.println();
-    Serial.println();
-    Serial.print("Connecting to ");
-    Serial.println(ssid);
-    
-    /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
-     would try to act as both a client and an access-point and could cause
-     network-issues with your other WiFi-devices on your WiFi-network. */
-    WiFi.mode(WIFI_STA);
-    WiFi.begin(ssid, password);
-    
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
-    }
-    
-    Serial.println("");
-    Serial.println("WiFi connected");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-}
-
-String response;
-char buffer[50];
-void loop(){
-    byte temperature = 0;
-    byte humidity = 0;
-    if (dht11.read(pinDHT11, &temperature, &humidity, NULL)) {
-        Serial.print("Read DHT11 failed.");
-        return;
-    }
-    
-    response = "";
-    sprintf (buffer, "{\"temperature\": %d, \"humidity\": %d}",(int)temperature, (int)humidity);
-    int statusCode = client.post("/api/sensors/", buffer , &response);
-    if(statusCode == 201){;
-        Serial.println(response);
-    }
-    delay(2000);
-}
-```
 
 ### Robot Móvil:
 
@@ -1729,6 +1512,210 @@ if __name__ == '__main__':
         except (KeyboardInterrupt, SystemExit):
 	       GPIO.cleanup()
 	    break
+```
+
+#### Petición de Datos
+
+```python
+import requests
+import datetime
+
+url = 'http://192.168.2.9/api/sensors/'
+
+response = requests.get(url)
+assert response.status_code == 200
+
+for data in response.json():
+    date = datetime.datetime.strptime(data['date_created'][:-1], "%Y-%m-%dT%H:%M:%S.%f")
+    humidity = data['humidity']
+    temperature = data['temperature']
+    print("Fecha: {}, Humedad: {}, Temperatura: {}".format(date, humidity, temperature))
+```
+
+#### Envio de Datos:
+
+```python
+import requests
+import datetime
+import json
+import time
+
+url = 'http://192.168.2.9/api/sensors/'
+
+ for i in range(100):
+	date = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+
+	headers = {'Content-type': 'application/json'}
+	response = requests.post(url,  data =json.dumps({'date_created': date,'temperature': 11.1, 'humidity': 10.1}), headers=headers)
+	assert response.status_code == 201
+	time.sleep(0.1)
+```
+
+### Configuración de motion
+
+Creamos un directorio para guardar las imagenes:
+
+```console
+pi@raspberrypi:~ $ mkdir  /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chgrp motion /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chmod g+rwx /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chmod -R g+w /home/pi/Monitor/
+```
+Instalamos la librería **motion**.
+
+```console
+pi@raspberrypi:~ $ sudo apt-get install -y motion
+```
+Editamos el archivo motion.conf, buscando los siguientes campos y los cambiamos a lo siguientes valores:
+
+```console
+pi@raspberrypi:~ $ sudo nano /etc/motion/motion.conf
+```
+
+	stream_localhost off
+	webcontrol_localhost off
+	framerate 60
+	target_dir /home/pi/Monitor
+
+	
+Editamos el archivo **/etc/default/motion** y cambiamos de **no** a **yes**
+
+```console
+pi@raspberrypi:~ $ sudo nano /etc/default/motion
+```
+	start_motion_daemon=yes
+
+Despues ejecutamos lo siguiente:
+
+```console
+pi@raspberrypi:~ $ sudo service motion stop
+pi@raspberrypi:~ $ sudo service motion start
+```
+	
+Y Accedemos a la imagen de la cámara a traves de la url desde nuestro buscador: http://{your-rpi-address}:8081/ 
+
+Obteniendo lo siguiente:
+
+![](img/server/Screenshot.png) 
+
+
+Las imagenes y videos pueden llenar el almacenamiento, por ello configuramos que pasada los 15 minutos despues de cada hora borre todos excepto las 20 ultimas imagenes:
+
+```console
+pi@raspberrypi:~ $ sudo crontab -e
+```
+
+
+	15 * * * * (date; ls /home/pi/Monitor/*.jpg | head -n -20 | xargs rm -v) >> /tmp/images_deleted 2>&1
+
+
+## Resumen
+
+Para los alumnos del curso es necesario ejecutar los siguientes comandos:
+
+	sudo apt-get -y update
+	sudo apt-get -y upgrade
+	sudo apt-get install -y python-dev
+	sudo apt-get install -y python-rpi.gpio
+	sudo apt-get install -y python-pip
+	sudo pip install adafruit_python_dht
+	sudo pip install virtualenv
+	mkdir ~/projects
+	cd ~/projects
+	virtualenv rpi-env
+	source rpi-env/bin/activate
+	pip install django
+	pip install djangorestframework
+	sudo apt-get install -y apache2 libapache2-mod-wsgi
+	sudo apt-get install -y motion
+
+
+### ESP8266
+
+Para realizar esta parte es necesario tener instalado las herramientas necesarias para compilar y quemar el *ESP8266*
+
+#### esp8266-restclient [link](https://github.com/csquared/arduino-restclient) 
+
+```console
+cd ~/Documents/Arduino
+mkdir libraries
+cd libraries
+git clone https://github.com/dakaz/esp8266-restclient.git RestClient
+```
+
+#### SimpleDHT [link](https://github.com/winlinvip/SimpleDHT)
+
+```console
+cd ~/Documents/Arduino
+mkdir libraries
+cd libraries
+git clone https://github.com/winlinvip/SimpleDHT.git SimpleDHT
+```
+
+Código del cliente:
+
+```cpp
+#include <RestClient.h>
+#include <ESP8266WiFi.h>
+#include <SimpleDHT.h>
+
+
+const char* ssid     = "{your ssid}";
+const char* password = "{your password}";
+
+const char* host = "{your ip or domain}";
+
+RestClient client = RestClient(host);
+
+int pinDHT11 = 2;
+SimpleDHT11 dht11;
+
+void setup() {
+    Serial.begin(115200);
+    delay(10);
+    client.setContentType("application/json");
+    // We start by connecting to a WiFi network
+    
+    Serial.println();
+    Serial.println();
+    Serial.print("Connecting to ");
+    Serial.println(ssid);
+    
+    /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
+     would try to act as both a client and an access-point and could cause
+     network-issues with your other WiFi-devices on your WiFi-network. */
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(ssid, password);
+    
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+}
+
+String response;
+char buffer[50];
+void loop(){
+    byte temperature = 0;
+    byte humidity = 0;
+    if (dht11.read(pinDHT11, &temperature, &humidity, NULL)) {
+        Serial.print("Read DHT11 failed.");
+        return;
+    }
+    
+    response = "";
+    sprintf (buffer, "{\"temperature\": %d, \"humidity\": %d}",(int)temperature, (int)humidity);
+    int statusCode = client.post("/api/sensors/", buffer , &response);
+    if(statusCode == 201){;
+        Serial.println(response);
+    }
+    delay(2000);
+}
 ```
 
 ```console
