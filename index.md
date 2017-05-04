@@ -2,7 +2,7 @@ Taller de Raspberry
 =================
 
 
-## Tabla de contenidos
+# Tabla de contenidos
 
 1. [Introducción al Raspberry Pi](#introducción-al-raspberry-pi)
 2. [Manejo de los GPIO's](#manejo-de-los-gpios)
@@ -10,8 +10,7 @@ Taller de Raspberry
 4. [Bluetooth](#bluetooth)
 
 
-Introducción al Raspberry Pi
-===========================
+#Introducción al Raspberry Pi
 
 ![](img/intro/anio.jpg)
 
@@ -23,7 +22,7 @@ Introducción al Raspberry Pi
 
 ![](img/intro/proyectos.jpg)
 
-#### Recursos
+## Recursos
 
 - SoC: Broadcom BCM2835 (CPU + GPU + DSP + SDRAM + puerto USB)
 - CPU: ARM 1176JZF-S a 700 MHz (familia ARM11)
@@ -43,27 +42,27 @@ Introducción al Raspberry Pi
 - Dimensiones: 85.60mm × 53.98mm
 - Sistemas operativos soportados:GNU/Linux: Debian (Raspbian), Fedora (Pidora), Arch Linux (Arch Linux ARM), Slackware Linux. RISC OS
 
-#### Modelos
+## Modelos
 
-##### RPI 1 Modelo A
+### RPI 1 Modelo A
 <img  src="img/intro/ModelA.png" width="500" alt=""/>
 
-##### RPI 1 Modelo A+
+### RPI 1 Modelo A+
 <img  src="img/intro/ModelA+.png" width="500" alt=""/>
 
-##### RPI 1 Modelo B
+### RPI 1 Modelo B
 <img  src="img/intro/ModelB.png" width="500" alt=""/>
 
-##### RPI 1 Modelo B+
+### RPI 1 Modelo B+
 <img  src="img/intro/ModelB+.jpg" width="500" alt=""/>
 
-##### RPI 2 Modelo B
+### RPI 2 Modelo B
 <img  src="img/intro/Model2B.jpeg" width="500" alt=""/>
 
-##### RPI ZERO
+### RPI ZERO
 <img  src="img/intro/modelzero.jpg" width="500">
 
-##### RPI 3 Modelo B
+### RPI 3 Modelo B
 <img  src="img/intro/model3.jpg" width="500" alt=""/>
 
 
@@ -80,9 +79,6 @@ Introducción al Raspberry Pi
 |Tamaño	|85,60mmx56,5 mm|65mmx56,5 mm|85,60mmx56,5 mm|85,60mmx56,5 mm|85,60mmx56,5 mm|65mmx30mm|85,60mmx56,5 mm|
 |Peso   |45 g.|23 g.|45 g.|45 g.|45 g.|9 g| 45g|
 |Precio	|25 dólares|20 dólares|35 dólares|35 dólares|35 dólares|5 dólares| 35 dólares|
-
-
-## Relación con otros ordenadores
 
 ## Herramientas
 
@@ -105,7 +101,7 @@ $ ssh pi@your.rpi.ip.address
 $ scp your_archivo pi@your.rpi.ip.address:"/home/pi"
 ```
 
-## Materiales
+### Materiales
 
 - MicroSD
 - Cable ethernet
@@ -332,10 +328,9 @@ pi@raspberrypi:~ $ rsub your_file
 	pi@raspberrypi:~ $ sudo apt-get install -y tree
 	pi@raspberrypi:~ $ sudo apt-get install -y mlocate
 	pi@raspberrypi:~ $ sudo updatedb
-	
-	
-Manejo de los GPIO's
-==================
+
+# Manejo de los GPIO's
+
 
 ![](img/GPIO/imagen.png)
 
@@ -591,8 +586,7 @@ pi@raspberrypi:~ $ sudo pip install adafruit_python_dht
 ```
 
 
-Robot Móvil con Sensor de Temperatura y Humedad
-===============================================
+$ Robot Móvil con Sensor de Temperatura y Humedad
 
 El proyecto que se implementará consiste en el monitoreo de sensores y control de actuadores mediante una interfaz web.
 
@@ -613,7 +607,7 @@ Esta arquitectura tiene como cualidad de ser simple y escalable.
 ![](img/server/imagen1.png) 
 
 
-# Aplicación WEB:
+## Aplicación WEB:
 
 Para esta parte implementaremos un servicio restful.
 
@@ -637,14 +631,14 @@ Lo activamos con:
 
 ```console
 pi@raspberrypi:~/projects $ source rpi-env/bin/activate
-```	
+```
 Teniendo todo lo anterior instalamos django y django-rest-framework:
 
 ```console
 (rpi-env) pi@raspberrypi:~/projects $ pip install django
 (rpi-env) pi@raspberrypi:~/projects $ pip install djangorestframework
 ```
-	
+
 Creamos un proyecto llamado **Raspberry** y una aplicación llamada **Domo**:
 
 ```console
@@ -659,7 +653,7 @@ Para verificar que vamos por buen camino ejecutamos el siguiente comando para vi
 ```console
 (rpi-env)  pi@raspberrypi:~/projects/Raspberry $ tree 
 ```
-	
+
 Debiendo obtener lo siguiente:
 
 		.
@@ -690,7 +684,7 @@ Debiendo obtener lo siguiente:
 	└── templates
 	    └── index.html
 
-	
+
 Vamos a hacer una pequeña prueba para ello editamos el archivo settings.py y añadimos  la ip del raspberry(en mi caso '192.168.2.9')  en la linea ALLOWED_HOSTS = []
 
 ```console
@@ -707,10 +701,10 @@ Y luego lanzamos el servidor de desarrollo:
 ```console
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py runserver 0.0.0.0:8000
 ```
-	
+
 Ingresamos desde nuestra pc a un buscador y colocamos la ip del raspberry seguido del puerto 8000, en mi caso http://192.168.2.9:8000/ y deberiamos obtener algo similar a lo que muestra la siguiente imagen:
 
-![](img/server/screencapture.png) 
+![](img/server/screencapture.png)
 
 
 Para apagar el servidor apretamos Ctrl+C
@@ -1156,7 +1150,7 @@ function stop() {
 };
 ```
 
-	
+
 ```console
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py makemigrations
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py migrate
@@ -1164,7 +1158,7 @@ function stop() {
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py runserver 0.0.0.0:8000
 ```
 
-![](img/server/screencapture2.png) 
+![](img/server/screencapture2.png)
 
 ```console
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ cd
@@ -1176,12 +1170,12 @@ Ahora instalamos el servidor Apache:
 ```console
 pi@raspberrypi:~ $ sudo apt-get install -y apache2 libapache2-mod-wsgi
 ```
-	
+
 Despues de instalamos editamos el archivo 000-default.conf ubicado en  **/etc/apache2/sites-available **, añadiendo lo siguiente antes de **< /VirtualHost >**
 
 ```console
-pi@raspberrypi:~ $ sudo nano /etc/apache2/sites-available/000-default.conf 
-```	
+pi@raspberrypi:~ $ sudo nano /etc/apache2/sites-available/000-default.conf
+```
 ```bash
 [...]
 Alias /static /home/pi/projects/static
@@ -1202,7 +1196,7 @@ WSGIScriptAlias / /home/pi/projects/Raspberry/Raspberry/wsgi.py
 
 Luego le damos permisos a las carpetas y archivos.
 
-```console	
+```console
 pi@raspberrypi:~ $ sudo chmod 664  ~/projects/Raspberry/db.sqlite3 
 pi@raspberrypi:~ $ sudo chown www-data ~/projects/Raspberry/db.sqlite3 
 pi@raspberrypi:~ $ sudo chown www-data ~/projects/Raspberry
@@ -1211,7 +1205,7 @@ pi@raspberrypi:~ $ sudo service apache2 restart
 
 Ahora podremos ingresar directamente a la ip sin necesidad de indicar el puerto ni ejecutar ningun comando ya que se esta ejecutando el servidor de producción.
 
-# Servicio o Demonio
+## Servicio o Demonio
 
 Creamos un archivo llamado **myservice.py**
 
@@ -1368,11 +1362,11 @@ Salida:
 ![](img/server/screencapture3.png)
 
 
-# Control de Motores:
+## Control de Motores:
 
 Luego implementamos la clase **Car**  que se encarga de manejar los movimientos del vehículo.
 
-##### Car.py
+**Car.py**
 
 ```python
 import RPi.GPIO as GPIO
@@ -1445,7 +1439,7 @@ class Car:
 
 Ahora creamos la clase **Data** que se encarga de obtener los datos, filtrar el último y verificar si este ha sido creado en menos de 1 segundo. Si cumple lo anterior obtenemos el comando  **status** y realizamos la tarea respectiva.
 
-##### main.py
+** main.py **
 
 ```python
 #!/usr/bin/env python
@@ -1517,9 +1511,9 @@ if __name__ == '__main__':
 	    break
 ```
 
-# Otros Clientes
+## Otros Clientes
 
-## Petición de Datos
+### Petición de Datos
 
 ```python
 import requests
@@ -1537,7 +1531,7 @@ for data in response.json():
     print("Fecha: {}, Humedad: {}, Temperatura: {}".format(date, humidity, temperature))
 ```
 
-## Envio de Datos:
+### Envio de Datos:
 
 ```python
 import requests
@@ -1557,7 +1551,7 @@ url = 'http://192.168.2.9/api/sensors/'
 ```
 
 
-## ESP8266
+### ESP8266
 
 Para realizar esta parte es necesario tener instalado las herramientas necesarias para compilar y quemar el *ESP8266*
 
@@ -1645,7 +1639,7 @@ void loop(){
 }
 ```
 
-# Motion
+## Motion
 
 Creamos un directorio para guardar las imagenes:
 
@@ -1723,10 +1717,9 @@ Para los alumnos del curso es necesario ejecutar los siguientes comandos:
 	sudo apt-get install -y motion
 
 
-BLUETOOTH
-=========
+#BLUETOOTH
 
-### bluecarpy.py
+** bluecarpy.py**
 
 ```python
 from bluetooth import *
@@ -1793,7 +1786,7 @@ while True:
 
 Añadir permiso para poder acceder al recurso de ***Bluetooth***.
 
-### AndroidManifest.xml
+** AndroidManifest.xml**
 
 ```xml
 ....
@@ -1804,7 +1797,7 @@ package="com.rpi.bluecarpi.bluecarpi">
 ...
 ```
 
-### activity_main.xml
+** activity_main.xml **
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1875,7 +1868,7 @@ package="com.rpi.bluecarpi.bluecarpi">
 </RelativeLayout>
 ```
 
-### MainActivity.java
+** MainActivity.java**
 
 ```java
 public class MainActivity extends AppCompatActivity {
