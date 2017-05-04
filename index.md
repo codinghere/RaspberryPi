@@ -10,7 +10,7 @@ Taller de Raspberry
 4. [Bluetooth](#bluetooth)
 
 
-#Introducción al Raspberry Pi
+# Introducción al Raspberry Pi
 
 ![](img/intro/anio.jpg)
 
