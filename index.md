@@ -586,7 +586,7 @@ pi@raspberrypi:~ $ sudo pip install adafruit_python_dht
 ```
 
 
-$ Robot Móvil con Sensor de Temperatura y Humedad
+# Robot Móvil con Sensor de Temperatura y Humedad
 
 El proyecto que se implementará consiste en el monitoreo de sensores y control de actuadores mediante una interfaz web.
 
