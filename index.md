@@ -763,7 +763,7 @@ class SensorSerializer(serializers.ModelSerializer):
 class MotorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Motor
-        fields = (id', 'date_created', 'status')
+        fields = ('id', 'date_created', 'status')
 ```
 ```console
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Domo/views.py
