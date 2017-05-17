@@ -1468,7 +1468,7 @@ class Data:
         s = response.headers['date']
         u = datetime.strptime(s, "%a, %d %b %Y %H:%M:%S %Z")
         assert response.status_code == 200
-        data = response.json()[0]
+        data = response.json()['results'][0]
         date = datetime.strptime(data['date_created'][:-1], "%Y-%m-%dT%H:%M:%S.%f")
         if self.before == date:
             return
