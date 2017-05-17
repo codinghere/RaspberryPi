@@ -757,13 +757,13 @@ from Domo.models import Sensor, Motor
 class SensorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sensor
-        fields = ('date_created', 'temperature', 'humidity')
+        fields = ('id', 'date_created', 'temperature', 'humidity')
 
 
 class MotorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Motor
-        fields = ('date_created', 'status')
+        fields = (id', 'date_created', 'status')
 ```
 ```console
 (rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Domo/views.py
@@ -778,12 +778,12 @@ from Domo.serializers import SensorSerializer, MotorSerializer
 
 
 class SensorViewSet(viewsets.ModelViewSet):
-    queryset = Sensor.objects.all().order_by('-id')[:40]
+    queryset = Sensor.objects.all().order_by('-id')
     serializer_class = SensorSerializer
 
 
 class MotorViewSet(viewsets.ModelViewSet):
-    queryset = Motor.objects.all().order_by('-id')[:40]
+    queryset = Motor.objects.all().order_by('-id')
     serializer_class = MotorSerializer
 
 
@@ -890,6 +890,12 @@ STATICFILES_DIRS = (
     # os.path.join(PROJECT_DIR, "static").replace('\\', '/'),
     os.path.join(PROJECT_DIR, "static").replace('\\', '/'),
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 ```
 
 ```console
@@ -1061,13 +1067,15 @@ $(document).ready(function () {
             type: "GET", // http method
             // handle a successful response
             success: function (data) {
+               
+                results = data['results'];
                 temperature['x'] = [];
                 temperature['y'] = [];
 
                 humidity['x'] = [];
                 humidity['y'] = [];
 
-                $.each(data, function (index, value) {
+                $.each(results, function (index, value) {
                     temperature['x'].push(new Date(value['date_created']));
                     temperature['y'].push(value['temperature']);
 
