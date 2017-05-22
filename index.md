@@ -1797,12 +1797,12 @@ Añadir permiso para poder acceder al recurso de ***Bluetooth***.
 **AndroidManifest.xml**
 
 ```xml
-....
+[...]
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="com.rpi.bluecarpi.bluecarpi">
 <uses-permission android:name="android.permission.BLUETOOTH" />
 <application
-...
+[...]
 ```
 
 **activity_main.xml**
