@@ -1727,7 +1727,7 @@ Para los alumnos del curso es necesario ejecutar los siguientes comandos:
 
 #BLUETOOTH
 
-** bluecarpy.py**
+**bluecarpy.py**
 
 ```python
 from bluetooth import *
@@ -1794,7 +1794,7 @@ while True:
 
 Añadir permiso para poder acceder al recurso de ***Bluetooth***.
 
-** AndroidManifest.xml**
+**AndroidManifest.xml**
 
 ```xml
 ....
@@ -1805,7 +1805,7 @@ package="com.rpi.bluecarpi.bluecarpi">
 ...
 ```
 
-** activity_main.xml **
+**activity_main.xml**
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -2040,7 +2040,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
 ```
