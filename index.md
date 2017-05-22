@@ -1725,7 +1725,7 @@ Para los alumnos del curso es necesario ejecutar los siguientes comandos:
 	sudo apt-get install -y motion
 
 
-#BLUETOOTH
+### BLUETOOTH
 
 **bluecarpy.py**
 
