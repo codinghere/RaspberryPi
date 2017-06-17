@@ -582,7 +582,10 @@ pi@raspberrypi:~ $ sudo apt-get -y upgrade
 pi@raspberrypi:~ $ sudo apt-get install -y python-dev
 pi@raspberrypi:~ $ sudo apt-get install -y python-rpi.gpio
 pi@raspberrypi:~ $ sudo apt-get install -y python-pip
-pi@raspberrypi:~ $ sudo pip install adafruit_python_dht
+pi@raspberrypi:~ $ sudo apt-get install git-core
+pi@raspberrypi:~ $ git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+pi@raspberrypi:~ $ cd Adafruit_Python_DHT/
+pi@raspberrypi:~/Adafruit_Python_DHT $ sudo python setup.py install
 ```
 
 
