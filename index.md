@@ -1450,7 +1450,7 @@ class Car:
 
 Ahora creamos la clase **Data** que se encarga de obtener los datos, filtrar el último y verificar si este ha sido creado en menos de 1 segundo. Si cumple lo anterior obtenemos el comando  **status** y realizamos la tarea respectiva.
 
-** main.py **
+**main.py**
 
 ```python
 #!/usr/bin/env python
@@ -1518,8 +1518,8 @@ if __name__ == '__main__':
             elif resp == 'S':
                 car.stop()
         except (KeyboardInterrupt, SystemExit):
-	       GPIO.cleanup()
-	    break
+	        GPIO.cleanup()
+	        break
 ```
 
 ## Otros Clientes
