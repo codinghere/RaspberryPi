@@ -1518,8 +1518,9 @@ if __name__ == '__main__':
             elif resp == 'S':
                 car.stop()
         except (KeyboardInterrupt, SystemExit):
-	        GPIO.cleanup()
-	        break
+            GPIO.cleanup()
+            break
+            
 ```
 
 ## Otros Clientes
