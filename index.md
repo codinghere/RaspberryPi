@@ -4,6 +4,12 @@ Taller de Raspberry
 
 # Tabla de contenidos
 
+<div class="pagination">
+    {% for post in site.posts  reversed %}
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    {% endfor %}
+</div>
+
 <ol>
   {% for post in site.posts  reversed %}
     <li>
