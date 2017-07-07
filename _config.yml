@@ -1,7 +1,4 @@
 theme: jekyll-theme-dinky
 
-paginate:         1
-
-gems:
-  - jekyll-paginate
-  - jekyll-gist
+gems: [jekyll-paginate]
+paginate: 5
