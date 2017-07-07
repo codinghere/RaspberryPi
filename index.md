@@ -1,8 +1,6 @@
 Taller de Raspberry
 =================
 
-{% gist 5555251 gist.md %}
-
 # Tabla de contenidos
 
 1. [Introducción al Raspberry Pi](#introducción-al-raspberry-pi)
@@ -357,6 +355,9 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 ![](img/GPIO/led2.png)
 
 #### [Blink](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/blink.py) 
+
+{% gist f8464b57e091777a5aef48fdd9ea9067 gist.md %}
+
 ```python
 #!/usr/bin/python
 import RPi.GPIO as GPIO
