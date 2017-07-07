@@ -354,7 +354,7 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 
 ![](img/GPIO/led2.png)
 
-#### [Blink](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/blink.py) 
+#### Blink
 
 {% gist f8464b57e091777a5aef48fdd9ea9067 blink.py %}
 
@@ -382,7 +382,7 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 
 {% gist f8464b57e091777a5aef48fdd9ea9067 switch2.py %}
 
-### [Ultrasonido](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/ultrasound.py)
+### Ultrasonido
 
 > Los sensores de ultrasonidos o sensores ultrasónicos son detectores de proximidad que trabajan libres de roces mecánicos y que detectan objetos a distancias que van desde pocos centímetros hasta varios metros. El sensor emite un sonido y mide el tiempo que la señal tarda en regresar. Estos reflejan en un objeto, el sensor recibe el eco producido y lo convierte en señales eléctricas, las cuales son elaboradas en el aparato de valoración
 
@@ -392,7 +392,7 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 
 ![](img/GPIO/ultrasonido.png "Ultrasonido")
 
-### [Servomotor](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/servomotor.py) 
+### Servomotor
 > Un servomotor (también llamado servo) es un dispositivo similar a un motor de corriente continua que tiene la capacidad de ubicarse en cualquier posición dentro de su rango de operación, y mantenerse estable en dicha posición.
 
 ![](img/GPIO/servomotor.jpg)
@@ -400,7 +400,7 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 {% gist f8464b57e091777a5aef48fdd9ea9067 servomotor.py %}
 
 
-### [DHTXX](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/DHT.py)
+### DHTXX
 
 ## Instalación
 
