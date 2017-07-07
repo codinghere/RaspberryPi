@@ -367,7 +367,7 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 
 ### Pulsador
 
-#### [Switch 1](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/switch1.py)
+#### Switch 1
 
 >Los pulsadores (PUSHBUTTONS), son interruptores que al ser accionados de forma manual cambian de estado y al soltarlo regresan a su estado inicial
 
