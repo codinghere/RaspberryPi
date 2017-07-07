@@ -1,14 +1,15 @@
 Taller de Raspberry
 =================
 
+<nav>
+  <ul class="pagination">
+    {% for post in site.posts  reversed %}
+        <li><a href="{{ site.baseurl }}{{ post.url }}">{{forloop.index}}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
 
 # Tabla de contenidos
-
-<div class="pagination">
-    {% for post in site.posts  reversed %}
-        <a href="{{ site.baseurl }}{{ post.url }}"> {{forloop.index}}</a>
-    {% endfor %}
-</div>
 
 <ol>
   {% for post in site.posts  reversed %}
