@@ -6,7 +6,7 @@ Taller de Raspberry
 
 <div class="pagination">
     {% for post in site.posts  reversed %}
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ site.baseurl }}{{ post.url }}">forloop.index</a>
     {% endfor %}
 </div>
 
@@ -15,9 +15,6 @@ Taller de Raspberry
     <li>
       <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
     </li> 
-    <li>
-      {{ post.content }}
-    </li>
   {% endfor %}
 </ol>
 
