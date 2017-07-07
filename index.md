@@ -356,7 +356,7 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 
 #### [Blink](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/blink.py) 
 
-{% gist f8464b57e091777a5aef48fdd9ea9067 gist.md %}
+{% gist f8464b57e091777a5aef48fdd9ea9067 blink.py %}
 
 ```python
 #!/usr/bin/python
