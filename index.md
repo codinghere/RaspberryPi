@@ -8,6 +8,8 @@ Taller de Raspberry
   {% for post in site.posts  reversed %}
     <li>
       <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    </li> 
+    <li>
       {{ post.content }}
     </li>
   {% endfor %}
@@ -29,5 +31,5 @@ Taller de Raspberry
   {% endfor %}
 </div>
 
-Test
+TestX
 =====
