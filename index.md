@@ -4,13 +4,13 @@ Taller de Raspberry
 
 # Tabla de contenidos
 
-<!--ol>
+<ol>
   {% for post in site.posts  reversed %}
     <li>
       <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
-</ol-->
+</ol>
 
 <div class="posts">
   {% for post in paginator.posts %}
@@ -27,3 +27,6 @@ Taller de Raspberry
   </article>
   {% endfor %}
 </div>
+
+Test
+=====
