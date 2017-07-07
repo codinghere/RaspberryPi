@@ -6,7 +6,7 @@ Taller de Raspberry
 
 <div class="pagination">
     {% for post in site.posts  reversed %}
-        <a href="{{ site.baseurl }}{{ post.url }}">forloop.index</a>
+        <a href="{{ site.baseurl }}{{ post.url }}"> {{forloop.index}}</a>
     {% endfor %}
 </div>
 
