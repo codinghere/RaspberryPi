@@ -1,2 +1,5 @@
 theme: jekyll-theme-dinky
-paginate_path: "/post/page:num"
+
+gems:
+  - jekyll-paginate
+  - jekyll-gist
