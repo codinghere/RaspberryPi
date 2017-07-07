@@ -358,51 +358,12 @@ pi@raspberrypi:~ $ sudo apt-get -y install python-rpi.gpio
 
 {% gist f8464b57e091777a5aef48fdd9ea9067 blink.py %}
 
-```python
-#!/usr/bin/python
-import RPi.GPIO as GPIO
-import time
-
-led = 18  # GPIO18
-delay = 1  # one second
-GPIO.setwarnings(False)  # disable warnings
-GPIO.setmode(GPIO.BCM)  # mode BCM or Board
-GPIO.setup(led, GPIO.OUT)  # input or output
-isRunning = True
-while isRunning:
-    try:
-        GPIO.output(led, True)
-        time.sleep(delay)
-        GPIO.output(led, False)
-        time.sleep(delay)
-    except KeyboardInterrupt:
-        isRunning = False
-GPIO.cleanup()
-```
-
 ![](img/GPIO/led.png "Led")
 
-#### [PWM](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/pwm.py)
-```python
-#!/usr/bin/python
-import RPi.GPIO as GPIO
+#### PWM
 
-led = 18  # GPIO18
-GPIO.setwarnings(False)  # disable warnings
-GPIO.setmode(GPIO.BCM)  # mode BCM or Board
-GPIO.setup(led, GPIO.OUT)  # input or output
-pwm_led = GPIO.PWM(led, 500)
-pwm_led.start(100)
-isRunning = True
-while isRunning:
-    try:
-        duty_s = raw_input("Enter Brightness (0 to 100): ")
-        duty = int(duty_s)
-        pwm_led.ChangeDutyCycle(duty)
-    except KeyboardInterrupt:
-        isRunning = False
-GPIO.cleanup()
-```
+{% gist f8464b57e091777a5aef48fdd9ea9067 pwm.py %}
+
 
 ### Pulsador
 
@@ -410,59 +371,16 @@ GPIO.cleanup()
 
 >Los pulsadores (PUSHBUTTONS), son interruptores que al ser accionados de forma manual cambian de estado y al soltarlo regresan a su estado inicial
 
+
 ![](img/GPIO/pulsador.jpg)
 
-```python
-#!/usr/bin/python
-import RPi.GPIO as GPIO
-import time
-
-switch = 18  # GPIO18
-delay = 0.2  # 0.2 seconds
-GPIO.setwarnings(False)  # disable warnings
-GPIO.setmode(GPIO.BCM)  # mode BCM or Board
-GPIO.setup(switch, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # input or output
-isRunning = True
-while isRunning:
-    try:
-        input_state = GPIO.input(switch)
-        if not input_state:
-            print("Button Pressed")
-        time.sleep(delay)
-    except KeyboardInterrupt:
-        isRunning = False
-GPIO.cleanup()
-```
+{% gist f8464b57e091777a5aef48fdd9ea9067 switch1.py %}
 
 ![](img/GPIO/pulsador.png "Pulsador")
 
-#### [Switch 2](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/switch2.py)
+#### Switch 2
 
-```python
-#!/usr/bin/python
-import RPi.GPIO as GPIO
-import time
-
-led = 18  # GPIO18
-switch = 23
-GPIO.setwarnings(False)  # disable warnings
-GPIO.setmode(GPIO.BCM)  # mode BCM or Board
-GPIO.setup(led, GPIO.OUT)  # input or output
-GPIO.setup(switch, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-led_state = False
-old_input_state = True
-isRunning = True
-while isRunning:
-    try:
-        new_input_state = GPIO.input(switch)
-        if not new_input_state and old_input_state:
-            led_state = not led_state
-        old_input_state = new_input_state
-        GPIO.output(led, led_state)
-    except KeyboardInterrupt:
-        isRunning = False
-GPIO.cleanup()
-```
+{% gist f8464b57e091777a5aef48fdd9ea9067 switch2.py %}
 
 ### [Ultrasonido](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/ultrasound.py)
 
@@ -470,40 +388,7 @@ GPIO.cleanup()
 
 ![](img/GPIO/ultrasonido2.png "Ultrasonido")
 
-```python
-import RPi.GPIO as GPIO
-import time
-
-TRIG = 23
-ECHO = 24
-
-GPIO.setmode(GPIO.BCM)
-
-print "Distance Measurement In Progress"
-GPIO.setup(TRIG, GPIO.OUT)
-GPIO.setup(ECHO, GPIO.IN)
-
-isRunning = True
-while isRunning:
-    try:
-        GPIO.output(TRIG, False)
-        print "Waiting For Sensor To Settle"
-        time.sleep(2)
-        GPIO.output(TRIG, True)
-        time.sleep(0.00001)
-        GPIO.output(TRIG, False)
-        while GPIO.input(ECHO) == 0:
-            pulse_start = time.time()
-        while GPIO.input(ECHO) == 1:
-            pulse_end = time.time()
-        pulse_duration = pulse_end - pulse_start
-        distance = pulse_duration * 17150
-        distance = round(distance, 2)
-        print "Distance:", distance, "cm"
-    except KeyboardInterrupt:
-        isRunning = False
-GPIO.cleanup()
-```
+{% gist f8464b57e091777a5aef48fdd9ea9067 ultrasound.py %}
 
 ![](img/GPIO/ultrasonido.png "Ultrasonido")
 
@@ -512,63 +397,20 @@ GPIO.cleanup()
 
 ![](img/GPIO/servomotor.jpg)
 
-```python
-from Tkinter import *
-import RPi.GPIO as GPIO
-import time
+{% gist f8464b57e091777a5aef48fdd9ea9067 servomotor.py %}
 
 
-class App:
-    def __init__(self, master):
-        frame = Frame(master)
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(18, GPIO.OUT)
-        pwm = GPIO.PWM(18, 100)
-        pwm.start(5)
-        frame.pack()
-        scale = Scale(frame, from_=0, to=180, orient=HORIZONTAL, command=self.update)
-        scale.grid(row=0)
-
-    def update(self, angle):
-        duty = float(angle) / 10.0 + 2.5
-        pwm.ChangeDutyCycle(duty)
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        GPIO.cleanup()
-
-
-root = Tk()
-root.wm_title('Servo Control')
-app = App(root)
-root.geometry("200x50+0+0")
-root.mainloop()
-```
 ### [DHTXX](https://github.com/CodeHuntersLab/RaspberryPi/blob/master/GPIO/DHT.py)
 
 ## Instalación
+
 ```console
 pi@raspberrypi:~ $ sudo apt-get -y update
 pi@raspberrypi:~ $ sudo apt-get -y install python-pip
 pi@raspberrypi:~ $ sudo pip install adafruit_python_dht
 ```
 
-```python
-import Adafruit_DHT
-import time
-
-isRunning = True
-while isRunning:
-    try:
-        humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 4)
-        if humidity is not None and temperature is not None:
-            print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
-        else:
-            print('Failed to get reading. Try again!')
-        time.sleep(1)
-    except KeyboardInterrupt:
-        isRunning = False
-
-```
+{% gist f8464b57e091777a5aef48fdd9ea9067 DHT.py %}
 
 ## C
 
