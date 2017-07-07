@@ -1,2 +1,2 @@
 theme: jekyll-theme-dinky
-paginate_path: "/blog/page:num"
+paginate_path: "/post/page:num"
