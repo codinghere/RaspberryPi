@@ -3,8 +3,6 @@ Taller de Raspberry
 
 # Tabla de contenidos
 
-testing
-
 <div id="post-nav">
     <div >    
         {% if page.previous.url %}
