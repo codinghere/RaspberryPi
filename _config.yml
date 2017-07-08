@@ -4,5 +4,4 @@ show_downloads: true
 google_analytics:
 theme: 
 plugins : ["jekyll-paginate"]
-pagination: 2
-paginate_path: "posts/page:num"
+pagination: 3
