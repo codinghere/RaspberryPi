@@ -3,19 +3,20 @@ Taller de Raspberry
 
 # Tabla de contenidos
 
-<div id="post-nav">
-    <div >    
-        {% if page.previous.url %}
-        <a class="prev" href="{{page.previous.url}}">
-            <span>&lt; {{page.previous.title}}</span>
-        </a> 
-        {% endif %} 
-        {% if page.next.url %} 
-        <a class="next" href="{{page.next.url}}">
-            <span>{{page.next.title}} &gt;</span>
-        </a> 
-        {% endif %} 
-    </div>
+<div class="posts">
+  {% for post in paginator.posts %}
+  <article class="post">
+    <h1 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <!-- <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time> -->
+
+    {{ post.content }}
+  </article>
+  {% endfor %}
 </div>
 
 
@@ -27,3 +28,4 @@ Taller de Raspberry
   {% endfor %}
 </ol>
 
+TESSS
