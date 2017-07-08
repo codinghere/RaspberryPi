@@ -1,25 +1,6 @@
 Taller de Raspberry
 =================
 
-# Tabla de contenidos
-
-<div class="posts">
-  {% for post in paginator.posts %}
-  <article class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <!-- <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time> -->
-
-    {{ post.content }}
-  </article>
-  {% endfor %}
-</div>
-
-
 <ol>
   {% for post in site.posts  reversed %}
     <li>
@@ -28,4 +9,3 @@ Taller de Raspberry
   {% endfor %}
 </ol>
 
-TESSS
