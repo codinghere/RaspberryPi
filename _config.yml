@@ -1,3 +1,4 @@
 theme: jekyll-theme-dinky
-
+gems: [jekyll-paginate]
 paginate: 2
+markdown: kramdown
