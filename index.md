@@ -1,13 +1,13 @@
 Taller de Raspberry
 =================
 
-<!--ol>
+<ol>
   {% for post in site.posts  reversed %}
     <li>
       <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
     </li> 
   {% endfor %}
-</ol-->
+</ol>
 
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
