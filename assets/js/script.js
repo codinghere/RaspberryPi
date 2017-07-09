@@ -17,7 +17,7 @@
                         dataHtml += '<li>' + item + '</li>';
                     });
                     dataHtml += '</ul>';
-                    container.prev().html(dataHtml);
+                    $('#data-container').html(dataHtml);
                 }
             };
             //$.pagination(container, options);
