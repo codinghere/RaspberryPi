@@ -2,12 +2,11 @@ $(function () {
 
     var container = $('#pagination-demo');
 
+    var sources  = [];
     $.each(document.getElementById("browsers").options, function (index, value) {
-        console.log(index);
+        sources.push(index);
         console.log(value);
-    });    
-    
-    var sources  = ['1', '2', '3'];
+    }); 
     
     var options = {
         dataSource: sources,
