@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(selector).pagination({
+    document.getElementById("pager").pagination({
         items: 100,
         itemsOnPage: 10,
         cssStyle: 'light-theme'
