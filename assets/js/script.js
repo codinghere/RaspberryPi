@@ -2,8 +2,9 @@ $(function () {
 
     var container = $('#pagination-demo');
 
-    console.log(document.getElementById("browsers").options);
-    console.log(document.getElementById("browsers").options.length);
+    $.each(document.getElementById("browsers").options, function (index, value) {
+        console.log(value);
+    });    
     
     var sources  = ['1', '2', '3'];
     
