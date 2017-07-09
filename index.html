@@ -5,7 +5,7 @@ title: Raspberry Pi
 
 <datalist id="browsers">
   {% for post in site.posts %}
-    <option value="{{ post.url}}">
+    <option value="{{site.baseurl}}{{ post.url}}">
   {% endfor %}
 </datalist>
 
