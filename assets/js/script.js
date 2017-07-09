@@ -16,7 +16,8 @@ $(function () {
             console.log(pagination);
             var dataHtml = '';
             $.each(response, function (index, item) {
-                dataHtml += '<a href="' + item + '">' + item + '</a>';
+                =
+                dataHtml += '<iframe src="' + item + '"></iframe>';
             });
 
             $('#data-container').html(dataHtml);
