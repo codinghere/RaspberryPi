@@ -10,6 +10,8 @@ $(function () {
     
     var options = {
         dataSource: sources,
+        pageSize: 1,
+        totalNumber: 4,
         callback: function (response, pagination) {
             console.log(response);
             console.log(pagination);
