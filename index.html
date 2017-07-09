@@ -10,13 +10,14 @@ title: Raspberry Pi
 <div id="pagination-demo"></div>
 <div id="data-container"></div>
 
-<ol>
-  {% for post in site.posts  reversed %}
-    <li>
-      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    </li> 
-  {% endfor %}
-</ol>
-
+<div id="test" style="display: none;">
+  <ol>
+    {% for post in site.posts  reversed %}
+      <li>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </li> 
+    {% endfor %}
+  </ol>
+</div>
 
 
