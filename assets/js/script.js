@@ -4,7 +4,7 @@ $(function () {
 
     $.each(document.getElementById("browsers").options, function (index, value) {
         console.log(index);
-        console.log(value.value);
+        console.log(value);
     });    
     
     var sources  = ['1', '2', '3'];
