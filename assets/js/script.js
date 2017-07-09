@@ -1,12 +1,21 @@
 $(function () {
+
+    function GetValues() {
+        $list = [];
+        $('#user-datalist').children().each(function () {
+            var value = $(this).val();
+            var id = $(this).attr('id');
+            var item = {id: id,value: value};
+            $list.push(item);
+        });
+        return $list;
+    }
+
+    console.log(GetValues());
+    
     var container = $('#pagination-demo');
 
-
     var sources  = ['1', '2', '3'];
-    $('#list_url').each(function(index, value){
-        console.log(index);
-        console.log(value);
-    });
     
     var options = {
         dataSource: sources,

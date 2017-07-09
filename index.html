@@ -4,12 +4,12 @@ title: Raspberry Pi
 ---
 
 <div style="display: none;">
-  <ul id="list_url">
-    {% for post in site.posts reversed %}
-      <li id="list_url-{{forloop.index}}"> {{ post.url }} </li> 
-    {% endfor %}
-  </ul>
-</div>
+
+<datalist id="user-datalist">
+	{% for post in site.posts reversed %}
+		<option id="{{forloop.index}}" value="">{{post.content}}</option>
+	{% end for}
+</datalist>
 
 <H1>{{page.title}}</H1>
 
