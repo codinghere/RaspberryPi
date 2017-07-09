@@ -3,7 +3,8 @@ $(function () {
     var container = $('#pagination-demo');
 
     $.each(document.getElementById("browsers").options, function (index, value) {
-        console.log(value);
+        console.log(index);
+        console.log(value.value);
     });    
     
     var sources  = ['1', '2', '3'];
