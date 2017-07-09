@@ -12,12 +12,8 @@ title: Raspberry Pi
 <div id="pagination-demo"></div>
 <div id="data-container"></div>
 
-<datalist id="browsers">
-  {% for post in site.posts %}
+ {% for post in site.posts %}
     <div id="div-{{forloop.index}}"> 
     	{{post.content}}
     </div>
-  {% endfor %}
-</datalist>
-
-
+ {% endfor %}
