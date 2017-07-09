@@ -3,7 +3,7 @@ $(function () {
 
 
     var sources  = ['1', '2', '3'];
-    $('#list_url').each(function(){
+    $('#list_url li').each(function(){
         console.log($(this));
     });
     
