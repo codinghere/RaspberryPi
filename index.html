@@ -6,9 +6,7 @@ title: Raspberry Pi
 <div style="display: none;">
   <ul id="list_url">
     {% for post in site.posts reversed %}
-      <li>
-        <div>{{ post.content }}</div>
-      </li> 
+      <li> {{ post.content }} </li> 
     {% endfor %}
   </ul>
 </div>
