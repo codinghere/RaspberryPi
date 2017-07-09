@@ -17,7 +17,7 @@ $(function () {
                     value.show();
                 }
                 else{
-                    document.getElementById(value).hide();
+                    document.getElementById(value).style.display = "none";
                 }
             }); 
 
