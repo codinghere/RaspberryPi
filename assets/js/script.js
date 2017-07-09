@@ -3,7 +3,7 @@ $(function () {
     var container = $('#pagination-demo');
 
     var sources  = [];
-    if($.each(document.getElementById("browsers") != "null"){
+    if(document.getElementById("browsers") != "null"){
         $.each(document.getElementById("browsers").options, function (index, value) {
             sources.push(value.value);
         }); 
