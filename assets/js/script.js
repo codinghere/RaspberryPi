@@ -2,6 +2,7 @@ $(function () {
 
     var container = $('#pagination-demo');
 
+    console.log($("#browsers").options);
     var sources  = ['1', '2', '3'];
     
     var options = {
