@@ -8,7 +8,7 @@ function simpleTemplating(data) {
 }
 
 $('#pagination-container').pagination({
-    dataSource: [1, 2, 3, 4, 5, 6, 7, ... , 195],
+    dataSource: [1, 2, 3, 4, 5, 6, 7, 12,],
     callback: function(data, pagination) {
         var html = Handlebars.compile($('#template-demo').html(), {
             data: data
