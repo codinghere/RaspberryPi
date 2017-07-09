@@ -22,7 +22,7 @@ var Pagination = {
     // add pages by number (from [s] to [f])
     Add: function(s, f) {
         for (var i = s; i < f; i++) {
-            Pagination.code += '<a>' + i + '</a>';
+            Pagination.code += '<a>' + i*2 + '</a>';
         }
     },
 
