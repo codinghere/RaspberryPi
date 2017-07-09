@@ -12,14 +12,7 @@ $(function () {
         pageSize: 1,
         totalNumber: 4,
         callback: function (response, pagination) {
-            console.log(response);
-            console.log(pagination);
-            var dataHtml = '';
-            $.each(response, function (index, item) {
-                dataHtml += item ;
-            });
-
-            $('#data-container').html(dataHtml);
+            console.log(response[0]);
         }
     };
             //$.pagination(container, options);
