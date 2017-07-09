@@ -7,7 +7,7 @@ title: Raspberry Pi
 
 <datalist id="user-datalist">
 	{% for post in site.posts reversed %}
-		<option id="{{forloop.index}}" value="">{{post.content}}</option>
+		{{post.content}}
 	{% end for %}
 </datalist>
 
