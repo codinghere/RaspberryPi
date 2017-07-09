@@ -34,4 +34,4 @@ $(function () {
     window.console && console.log('beforePageOnClick...');
      //return false
     });
-}();
+});
