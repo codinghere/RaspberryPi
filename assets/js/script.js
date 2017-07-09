@@ -13,11 +13,11 @@ $(function () {
         totalNumber: 4,
         callback: function (response, pagination) {
             $.each(sources, function (index, value) {
-                if(value== response[0]){
+                if(value == response[0]){
                     value.show();
                 }
                 else{
-                    value.hide();
+                    document.getElementById(value).hide();
                 }
             }); 
 
