@@ -3,11 +3,9 @@ layout: default
 title: Raspberry Pi
 ---
 
-<div style="display: none;">
-
 <datalist id="user-datalist">
 	{% for post in site.posts reversed %}
-		{{post.content}}
+		<option id="{{forloop.index}}" value="">{{post.content}}</option>
 	{% end for %}
 </datalist>
 
