@@ -1,12 +1,7 @@
 $(function () {
     var container = $('#pagination-demo');
-    var sources = function () {
-        var result = [];
-        for (var i = 1; i < 196; i++) {
-            result.push(i);
-        }
-        return result;
-    }();
+
+    var sources  = $("#SSID").data("texts").split(',').map(JSON.parse);
     
     var options = {
         dataSource: sources,
@@ -15,10 +10,12 @@ $(function () {
         callback: function (response, pagination) {
             console.log(response);
             console.log(pagination);
-            var dataHtml = ' <div id="test" style="display: none;">';
-            dataHtml += '<ol> {% for post in site.posts  reversed %}<li>';
-            dataHtml += '<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>';
-            dataHtml += ' </li> {% endfor %}</ol></div>';
+            var dataHtml = '<ul>';
+            $.each(response, function (index, item) {
+                dataHtml += '<li>' + item + '</li>';
+            });
+            dataHtml += '</ul>';
+
             $('#data-container').html(dataHtml);
         }
     };

@@ -10,14 +10,7 @@ title: Raspberry Pi
 <div id="pagination-demo"></div>
 <div id="data-container"></div>
 
-<div id="test" style="display: none;">
-  <ol>
-    {% for post in site.posts  reversed %}
-      <li>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </li> 
-    {% endfor %}
-  </ol>
-</div>
 
+<section id="SSID" data-texts='"Text1", "Text2", "Text3"'></section>
 
+{{site.posts}}
