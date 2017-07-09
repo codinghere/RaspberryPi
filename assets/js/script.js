@@ -17,6 +17,7 @@
                         dataHtml += '<li>' + item + '</li>';
                     });
                     dataHtml += '</ul>';
+                    console.log(dataHtml);
                     $('#data-container').html(dataHtml);
                 }
             };
