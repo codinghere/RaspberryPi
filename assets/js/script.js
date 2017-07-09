@@ -11,7 +11,8 @@ $(function () {
     var options = {
         dataSource: sources,
         callback: function (response, pagination) {
-            window.console && console.log(response, pagination);
+            console.log(response);
+            console.log(pagination);
             var dataHtml = '<ul>';
             $.each(response, function (index, item) {
                 dataHtml += '<li>' + item + '</li>';
