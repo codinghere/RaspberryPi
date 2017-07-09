@@ -1,6 +1,5 @@
 $(function () {
     var container = $('#pagination-demo');
-
     var sources  = $("#SSID").data("texts").split(',').map(JSON.parse);
     
     var options = {
