@@ -1,7 +1,17 @@
+function simpleTemplating(data) {
+    var html = '<ul>';
+    $.each(data, function(index, item){
+        html += '<li>'+ item +'</li>';
+    });
+    html += '</ul>';
+    return html;
+}
+
+
 /* * * * * * * * * * * * * * * * *
  * Pagination
  * javascript page navigation
- * * * * * * * * * * * * * * * * */
+ * * * * * * * * * * * * * * * * 
 
 var Pagination = {
 
@@ -22,7 +32,7 @@ var Pagination = {
     // add pages by number (from [s] to [f])
     Add: function(s, f) {
         for (var i = s; i < f; i++) {
-            Pagination.code += '<a>' + i*2 + '</a>';
+            Pagination.code += '<a>' + i + '</a>';
         }
     },
 
@@ -148,7 +158,7 @@ var Pagination = {
 
 /* * * * * * * * * * * * * * * * *
 * Initialization
-* * * * * * * * * * * * * * * * */
+* * * * * * * * * * * * * * * * 
 
 var init = function() {
     Pagination.Init(document.getElementById('pagination'), {
@@ -160,3 +170,4 @@ var init = function() {
 
 document.addEventListener('DOMContentLoaded', init, false);
 
+*/
