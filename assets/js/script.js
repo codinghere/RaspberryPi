@@ -12,7 +12,15 @@ $(function () {
         pageSize: 1,
         totalNumber: 4,
         callback: function (response, pagination) {
-            console.log(response[0]);
+            $.each(sources, function (index, value) {
+                if(value== response[0]){
+                    value.show();
+                }
+                else{
+                    value.hide();
+                }
+            }); 
+
         }
     };
             //$.pagination(container, options);
