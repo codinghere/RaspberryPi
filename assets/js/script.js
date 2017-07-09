@@ -1,22 +1,38 @@
-function simpleTemplating(data) {
-    var html = '<ul>';
-    $.each(data, function(index, item){
-        html += '<li>'+ item +'</li>';
+    $(function () {
+        function createDemo(name) {
+            var container = $('#pagination-' + name);
+            var sources = function () {
+                var result = [];
+                for (var i = 1; i < 196; i++) {
+                    result.push(i);
+                }
+                return result;
+            }();
+            var options = {
+                dataSource: sources,
+                callback: function (response, pagination) {
+                    window.console && console.log(response, pagination);
+                    var dataHtml = '<ul>';
+                    $.each(response, function (index, item) {
+                        dataHtml += '<li>' + item + '</li>';
+                    });
+                    dataHtml += '</ul>';
+                    container.prev().html(dataHtml);
+                }
+            };
+            //$.pagination(container, options);
+            container.addHook('beforeInit', function () {
+                window.console && console.log('beforeInit...');
+            });
+            container.pagination(options);
+            container.addHook('beforePageOnClick', function () {
+                window.console && console.log('beforePageOnClick...');
+                //return false
+            });
+            return container;
+        }
+        createDemo('demo1');
     });
-    html += '</ul>';
-    return html;
-}
-
-$('#pagination-container').pagination({
-    dataSource: [1, 2, 3, 4, 5, 6, 7, 12,],
-    callback: function(data, pagination) {
-        var html = Handlebars.compile($('#template-demo').html(), {
-            data: data
-        });
-        $('#data-container').html(html);
-    }
-})
-
 /* * * * * * * * * * * * * * * * *
  * Pagination
  * javascript page navigation
