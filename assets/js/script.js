@@ -16,10 +16,10 @@ $(function () {
         callback: function (response, pagination) {
             $.each(sources, function (index, value) {
                 if(value == response[0]){
-                    document.getElementById(value).style.visibility = 'visible';
+                    document.getElementById(value).style.display = 'none';
                 }
                 else{
-                    document.getElementById(value).style.visibility = 'hidden';
+                    document.getElementById(value).style.display = 'block';
                 }
             }); 
 
