@@ -3,17 +3,9 @@ layout: default
 title: Raspberry Pi
 ---
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
-
 <datalist id="browsers">
   {% for post in site.posts %}
-    <option value="{{ post.url }}">
+    <option value="{{site.url}}{{ post.url }}">
   {% endfor %}
 </datalist>
 
