@@ -4,8 +4,7 @@ $(function () {
 
     var sources  = [];
     $.each(document.getElementById("browsers").options, function (index, value) {
-        sources.push(index);
-        console.log(value);
+        sources.push(value.value);
     }); 
     
     var options = {
