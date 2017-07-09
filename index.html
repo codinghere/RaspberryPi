@@ -3,6 +3,15 @@ layout: default
 title: Raspberry Pi
 ---
 
+<div id="style="display: none;">
+  <ul id="list_url">
+    {% for post in site.posts reversed %}
+      <li>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </li> 
+    {% endfor %}
+  </ul>
+</div>
 
 <H1>{{page.title}}</H1>
 
@@ -11,6 +20,5 @@ title: Raspberry Pi
 <div id="data-container"></div>
 
 
-<section id="SSID" data-texts='"{{site.posts.size}}"'></section>
 
-{{site.posts[2].content}}
+

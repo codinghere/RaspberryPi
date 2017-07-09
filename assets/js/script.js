@@ -1,6 +1,11 @@
 $(function () {
     var container = $('#pagination-demo');
-    var sources  = $("#SSID").data("texts").split(',').map(JSON.parse);
+
+
+    var sources  = ['1', '2', '3'];
+    $('#list_url').each(function(){
+        console.log($(this));
+    });
     
     var options = {
         dataSource: sources,
