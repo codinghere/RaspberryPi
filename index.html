@@ -7,7 +7,7 @@ title: Raspberry Pi
   <ul id="list_url">
     {% for post in site.posts reversed %}
       <li>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.content }}</a>
+        <div id="list_url{{post.id}}">{{ post.content }}</div>
       </li> 
     {% endfor %}
   </ul>
