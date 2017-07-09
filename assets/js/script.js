@@ -14,11 +14,10 @@ $(function () {
         callback: function (response, pagination) {
             console.log(response);
             console.log(pagination);
-            var dataHtml = '<ul>';
+            var dataHtml = '';
             $.each(response, function (index, item) {
-                dataHtml += '<li>' + item + '</li>';
+                dataHtml += '<a href="' + item + '>' + item + '</a>';
             });
-            dataHtml += '</ul>';
 
             $('#data-container').html(dataHtml);
         }
