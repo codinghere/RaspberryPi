@@ -3,8 +3,8 @@ $(function () {
 
 
     var sources  = ['1', '2', '3'];
-    $('#list_url li').each(function(){
-        console.log($(this));
+    $('#list_url li').each(function(index, value){
+        console.log(index);
     });
     
     var options = {
