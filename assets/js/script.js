@@ -66,7 +66,7 @@ function numPages()
     return Math.ceil(objJson.length / records_per_page);
 }
 
-$(window).load(function() {
+$(document).ready(function() {
 	console.log("test")
     changePage(1);
 });
