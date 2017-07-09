@@ -14,7 +14,7 @@ $(function () {
         callback: function (response, pagination) {
             $.each(sources, function (index, value) {
                 if(value == response[0]){
-                    value.show();
+                    document.getElementById(value).style.display = 'inline-block';
                 }
                 else{
                     document.getElementById(value).style.display = "none";
