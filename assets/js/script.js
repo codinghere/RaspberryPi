@@ -24,15 +24,6 @@ $(function () {
             }); 
 
         }
-    };
-            //$.pagination(container, options);
-    container.addHook('beforeInit', function () {
-        window.console && console.log('beforeInit...');
-    });
-    container.pagination(options);
-    container.addHook('beforePageOnClick', function () {
-        window.console && console.log('beforePageOnClick...');
-                //return false
-            });
+    };;
     return container;
 });
