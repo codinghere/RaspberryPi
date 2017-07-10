@@ -13,8 +13,9 @@ title: Raspberry Pi
 </datalist>
 
 <div id="pagination-demo"></div>
- {% for post in site.posts reversed %}
-    <div id="div-{{forloop.index}}" style="display:none;"> 
+
+{% for post in site.posts reversed %}
+	<div id="div-{{forloop.index}}" style="display:none;"> 
     	{{post.content}}
     </div>
- {% endfor %}
+{% endfor %}
