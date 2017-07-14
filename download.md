@@ -16,9 +16,9 @@ permalink: /download/
     <center><i class="fa fa-heart"></i> Star it if you loved!</center>
     <br />
     <center>
-      <iframe src="https://ghbtns.com/github-btn.html?user=eyllanesc&amp;repo=devjournal&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+      <iframe src="https://ghbtns.com/github-btn.html?user=CodeHuntersLab&amp;repo=RaspberryPi&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
-      <iframe src="https://ghbtns.com/github-btn.html?user=eyllanesc&amp;repo=devjournal&amp;type=fork&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+      <iframe src="https://ghbtns.com/github-btn.html?user=eyllanesc&amp;repo=RaspberryPi&amp;type=fork&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
       <iframe src="https://ghbtns.com/github-btn.html?user=eyllanesc&amp;type=follow&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="200px" height="30px"></iframe>
     </center>
