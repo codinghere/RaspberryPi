@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Curso de Raspberry" property="og:site_name">
+
+  <meta content="BLUETOOTH" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+  <meta content="<h3>Bienvenidos!</h3><h1>Curso de Raspberry Pi</h1>" property="og:description">
+
+
+  <meta content="http://localhost:4000/2017/07/10/Bluetooth.html" property="og:url">
+
+
+  <meta content="2017-07-10T00:00:00-05:00" property="article:published_time">
+  <meta content="http://localhost:4000/acerca/" property="article:author">
+
+
+  <meta property="og:image" content="">
+
+
+  
+
+
+  
+
+  <title>BLUETOOTH</title>
+  <meta name="description" content="BLUETOOTH">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://localhost:4000/2017/07/10/Bluetooth.html">
+  <link rel="alternate" type="application/rss+xml" title="Curso de Raspberry" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body>
+<section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Curso de Raspberry</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        
+        <li><a href="/about/">Acerca</a></li>
+
+        
+
+        
+        
+        <li><a href="/download/">Descargar</a></li>
+
+        
+
+        
+        
+
+        
+        
+
+        
+        
+
+        
+
+
+      </ul>
+
+    <!--  <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Know More!</a></li>
+
+      </ul>-->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+<section>
+<h1 id="bluetooth">BLUETOOTH</h1>
+
+<p><strong>bluecarpy.py</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bluetooth</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">Car</span> <span class="kn">import</span> <span class="n">Car</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">"sudo hciconfig hci0 name </span><span class="se">\'</span><span class="s">raspberrypi-0</span><span class="se">\'</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">"sudo hciconfig hci0 piscan"</span><span class="p">)</span>
+
+<span class="n">server_sock</span> <span class="o">=</span> <span class="n">BluetoothSocket</span><span class="p">(</span><span class="n">RFCOMM</span><span class="p">)</span>
+<span class="n">server_sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s">""</span><span class="p">,</span> <span class="n">PORT_ANY</span><span class="p">))</span>
+<span class="n">server_sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="n">server_sock</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">uuid</span> <span class="o">=</span> <span class="s">"94f39d29-7d6d-437d-973b-fba39e49d4ee"</span>
+
+<span class="n">advertise_service</span><span class="p">(</span><span class="n">server_sock</span><span class="p">,</span> <span class="s">"AquaPiServer"</span><span class="p">,</span>
+                  <span class="n">service_id</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
+                  <span class="n">service_classes</span><span class="o">=</span><span class="p">[</span><span class="n">uuid</span><span class="p">,</span> <span class="n">SERIAL_PORT_CLASS</span><span class="p">],</span>
+                  <span class="n">profiles</span><span class="o">=</span><span class="p">[</span><span class="n">SERIAL_PORT_PROFILE</span><span class="p">],</span>
+                  <span class="c">#                   protocols = [ OBEX_UUID ]</span>
+                  <span class="p">)</span>
+<span class="n">motorL</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+<span class="n">motorR</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+
+<span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">motorL</span><span class="p">,</span> <span class="n">motorR</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">"Waiting for connection on RFCOMM channel </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="n">port</span>
+
+    <span class="n">client_sock</span><span class="p">,</span> <span class="n">client_info</span> <span class="o">=</span> <span class="n">server_sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">"Accepted connection from "</span><span class="p">,</span> <span class="n">client_info</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">client_sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="s">'Forward'</span><span class="p">:</span>
+            <span class="n">car</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">data</span> <span class="o">==</span> <span class="s">'Backward'</span><span class="p">:</span>
+            <span class="n">car</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">data</span> <span class="o">==</span> <span class="s">'Left'</span><span class="p">:</span>
+            <span class="n">car</span><span class="o">.</span><span class="n">left</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">data</span> <span class="o">==</span> <span class="s">'Right'</span><span class="p">:</span>
+            <span class="n">car</span><span class="o">.</span><span class="n">right</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">data</span> <span class="o">==</span> <span class="s">'Stop'</span><span class="p">:</span>
+            <span class="n">car</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="s">'ERROR'</span>
+        <span class="n">data</span> <span class="o">+=</span> <span class="s">"!"</span>
+        <span class="n">client_sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">IOError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">except</span> <span class="nb">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">client_sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">server_sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">break</span>
+</code></pre>
+</div>
+
+<p>Añadir permiso para poder acceder al recurso de <strong><em>Bluetooth</em></strong>.</p>
+
+<p><strong>AndroidManifest.xml</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>[...]
+<span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+<span class="na">package=</span><span class="s">"com.rpi.bluecarpi.bluecarpi"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.BLUETOOTH"</span> <span class="nt">/&gt;</span>
+[...]
+</code></pre>
+</div>
+
+<p><strong>activity_main.xml</strong></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:paddingBottom=</span><span class="s">"@dimen/activity_vertical_margin"</span>
+    <span class="na">android:paddingLeft=</span><span class="s">"@dimen/activity_horizontal_margin"</span>
+    <span class="na">android:paddingRight=</span><span class="s">"@dimen/activity_horizontal_margin"</span>
+    <span class="na">android:paddingTop=</span><span class="s">"@dimen/activity_vertical_margin"</span>
+    <span class="na">tools:context=</span><span class="s">"com.rpi.bluecarpi.bluecarpi.MainActivity"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TableLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"left|right|top|center|bottom"</span>
+        <span class="na">android:layout_centerVertical=</span><span class="s">"true"</span>
+        <span class="na">android:layout_centerHorizontal=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;TableRow</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;Button</span>
+                <span class="na">android:text=</span><span class="s">"@string/forward"</span>
+                <span class="na">android:id=</span><span class="s">"@+id/btnForward"</span>
+                <span class="na">android:layout_column=</span><span class="s">"11"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/TableRow&gt;</span>
+
+        <span class="nt">&lt;TableRow</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;Button</span>
+                <span class="na">android:text=</span><span class="s">"@string/left"</span>
+                <span class="na">android:id=</span><span class="s">"@+id/btnLeft"</span>
+                <span class="na">android:layout_column=</span><span class="s">"10"</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;Button</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:text=</span><span class="s">"@string/stop"</span>
+                <span class="na">android:id=</span><span class="s">"@+id/btnStop"</span>
+                <span class="na">android:layout_column=</span><span class="s">"11"</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;Button</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:text=</span><span class="s">"@string/rigth"</span>
+                <span class="na">android:id=</span><span class="s">"@+id/btnRight"</span>
+                <span class="na">android:layout_column=</span><span class="s">"12"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/TableRow&gt;</span>
+
+        <span class="nt">&lt;TableRow</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_column=</span><span class="s">"12"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;Button</span>
+                <span class="na">android:text=</span><span class="s">"@string/backward"</span>
+                <span class="na">android:id=</span><span class="s">"@+id/btnBackward"</span>
+                <span class="na">android:layout_column=</span><span class="s">"11"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/TableRow&gt;</span>
+
+    <span class="nt">&lt;/TableLayout&gt;</span>
+
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</code></pre>
+</div>
+
+<p>** MainActivity.java**</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="n">BluetoothSocket</span> <span class="n">_Socket</span><span class="o">;</span>
+    <span class="n">BluetoothDevice</span> <span class="n">_Device</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="kd">final</span> <span class="kt">byte</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="mi">33</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">readBufferPosition</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendBtMsg</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">){</span>
+        <span class="n">UUID</span> <span class="n">uuid</span> <span class="o">=</span> <span class="n">UUID</span><span class="o">.</span><span class="na">fromString</span><span class="o">(</span><span class="s">"94f39d29-7d6d-437d-973b-fba39e49d4ee"</span><span class="o">);</span> <span class="c1">//Standard SerialPortService ID</span>
+        <span class="k">try</span> <span class="o">{</span>
+
+            <span class="n">_Socket</span> <span class="o">=</span> <span class="n">_Device</span><span class="o">.</span><span class="na">createRfcommSocketToServiceRecord</span><span class="o">(</span><span class="n">uuid</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">_Socket</span><span class="o">.</span><span class="na">isConnected</span><span class="o">()){</span>
+                <span class="n">_Socket</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="n">OutputStream</span> <span class="n">mmOutputStream</span> <span class="o">=</span> <span class="n">_Socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+            <span class="n">mmOutputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// TODO Auto-generated catch block</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="kd">final</span> <span class="n">Handler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="o">();</span>
+
+        <span class="kd">final</span> <span class="n">Button</span> <span class="n">btnBackward</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnBackward</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="n">Button</span> <span class="n">btnForward</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnForward</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="n">Button</span> <span class="n">btnLeft</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnLeft</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="n">Button</span> <span class="n">btnRight</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnRight</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="n">Button</span> <span class="n">btnStop</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnStop</span><span class="o">);</span>
+
+        <span class="kd">final</span> <span class="n">BluetoothAdapter</span> <span class="n">_bluetoothAdapter</span> <span class="o">=</span> <span class="n">BluetoothAdapter</span><span class="o">.</span><span class="na">getDefaultAdapter</span><span class="o">();</span>
+
+        <span class="kd">final</span> <span class="kd">class</span> <span class="nc">workerThread</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+
+            <span class="kd">private</span> <span class="n">String</span> <span class="n">btMsg</span><span class="o">;</span>
+
+            <span class="kd">public</span> <span class="nf">workerThread</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">){</span>
+                <span class="n">btMsg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">sendBtMsg</span><span class="o">(</span><span class="n">btMsg</span><span class="o">);</span>
+
+                <span class="k">while</span> <span class="o">(!</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">isInterrupted</span><span class="o">()){</span>
+                    <span class="kt">int</span> <span class="n">bytesAvailable</span><span class="o">;</span>
+
+                    <span class="kt">boolean</span> <span class="n">workDone</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                    <span class="k">try</span> <span class="o">{</span>
+
+                        <span class="kd">final</span> <span class="n">InputStream</span> <span class="n">_inputStream</span><span class="o">;</span>
+                        <span class="n">_inputStream</span> <span class="o">=</span> <span class="n">_Socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+
+                        <span class="n">bytesAvailable</span> <span class="o">=</span> <span class="n">_inputStream</span><span class="o">.</span><span class="na">available</span><span class="o">();</span>
+
+                        <span class="k">if</span><span class="o">(</span><span class="n">bytesAvailable</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">){</span>
+                            <span class="kt">byte</span><span class="o">[]</span> <span class="n">packetBytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bytesAvailable</span><span class="o">];</span>
+                            <span class="kt">byte</span><span class="o">[]</span> <span class="n">readBuffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="o">];</span>
+                            <span class="n">_inputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">packetBytes</span><span class="o">);</span>
+
+                            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">bytesAvailable</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+                                <span class="kt">byte</span> <span class="n">b</span><span class="o">=</span><span class="n">packetBytes</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                                <span class="k">if</span><span class="o">(</span><span class="n">b</span><span class="o">==</span><span class="n">delimiter</span><span class="o">){</span>
+                                    <span class="kt">byte</span><span class="o">[]</span> <span class="n">encodedBytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">readBufferPosition</span><span class="o">];</span>
+                                    <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">encodedBytes</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">encodedBytes</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+                                    <span class="kd">final</span> <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">encodedBytes</span><span class="o">,</span> <span class="s">"US-ASCII"</span><span class="o">);</span>
+                                    <span class="n">readBufferPosition</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                                    <span class="n">handler</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+                                        <span class="nd">@Override</span>
+                                        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+
+                                        <span class="o">}</span>
+                                    <span class="o">});</span>
+                                    <span class="n">workDone</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                                    <span class="k">break</span><span class="o">;</span>
+                                <span class="o">}</span>
+                                <span class="k">else</span> <span class="o">{</span>
+                                    <span class="n">readBuffer</span><span class="o">[</span><span class="n">readBufferPosition</span><span class="o">++]</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+                                <span class="o">}</span>
+                            <span class="o">}</span>
+
+                            <span class="k">if</span><span class="o">(</span><span class="n">workDone</span><span class="o">){</span>
+                                <span class="n">_Socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                                <span class="k">break</span><span class="o">;</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">){</span>
+                        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+
+        <span class="k">assert</span> <span class="n">btnForward</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">btnForward</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+                <span class="o">(</span><span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">workerThread</span><span class="o">(</span><span class="s">"Forward"</span><span class="o">))).</span><span class="na">start</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="k">assert</span> <span class="n">btnBackward</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">btnBackward</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+                <span class="o">(</span><span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">workerThread</span><span class="o">(</span><span class="s">"Backward"</span><span class="o">))).</span><span class="na">start</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="k">assert</span> <span class="n">btnLeft</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">btnLeft</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+                <span class="o">(</span><span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">workerThread</span><span class="o">(</span><span class="s">"Left"</span><span class="o">))).</span><span class="na">start</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="k">assert</span> <span class="n">btnRight</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">btnRight</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+                <span class="o">(</span><span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">workerThread</span><span class="o">(</span><span class="s">"Right"</span><span class="o">))).</span><span class="na">start</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="k">assert</span> <span class="n">btnStop</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">btnStop</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+                <span class="o">(</span><span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">workerThread</span><span class="o">(</span><span class="s">"Stop"</span><span class="o">))).</span><span class="na">start</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="k">if</span><span class="o">(!</span><span class="n">_bluetoothAdapter</span><span class="o">.</span><span class="na">isEnabled</span><span class="o">()){</span>
+            <span class="n">Intent</span> <span class="n">enableBluetooth</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">BluetoothAdapter</span><span class="o">.</span><span class="na">ACTION_REQUEST_ENABLE</span><span class="o">);</span>
+            <span class="n">startActivityForResult</span><span class="o">(</span><span class="n">enableBluetooth</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">Set</span><span class="o">&lt;</span><span class="n">BluetoothDevice</span><span class="o">&gt;</span> <span class="n">pairedDevice</span> <span class="o">=</span> <span class="n">_bluetoothAdapter</span><span class="o">.</span><span class="na">getBondedDevices</span><span class="o">();</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">pairedDevice</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">BluetoothDevice</span> <span class="nl">device:</span><span class="n">pairedDevice</span><span class="o">){</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">device</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"raspberrypi-0"</span><span class="o">)){</span>
+                    <span class="n">_Device</span> <span class="o">=</span> <span class="n">device</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+</section>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container footer-content">
+    Hecho <i class ="fa fa-heart"></i> por eyllanesc<br>
+    Desarrollado con Jekyll
+  </div>
+</nav>
+
+  </body>
+
+</html>

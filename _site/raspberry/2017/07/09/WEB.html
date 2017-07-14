@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Curso de Raspberry" property="og:site_name">
+
+  <meta content="Robot Móvil con Sensor de Temperatura y Humedad" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+  <meta content="<h3>Bienvenidos!</h3><h1>Curso de Raspberry Pi</h1>" property="og:description">
+
+
+  <meta content="http://localhost:4000/raspberry/2017/07/09/WEB.html" property="og:url">
+
+
+  <meta content="2017-07-09T11:31:43-05:00" property="article:published_time">
+  <meta content="http://localhost:4000/acerca/" property="article:author">
+
+
+  <meta property="og:image" content="">
+
+
+  
+  <meta content="Raspberry" property="article:section">
+  
+
+
+  
+
+  <title>Robot Móvil con Sensor de Temperatura y Humedad</title>
+  <meta name="description" content="Robot Móvil con Sensor de Temperatura y Humedad">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://localhost:4000/raspberry/2017/07/09/WEB.html">
+  <link rel="alternate" type="application/rss+xml" title="Curso de Raspberry" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body>
+<section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Curso de Raspberry</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        
+        <li><a href="/about/">Acerca</a></li>
+
+        
+
+        
+        
+        <li><a href="/download/">Descargar</a></li>
+
+        
+
+        
+        
+
+        
+        
+
+        
+        
+
+        
+
+
+      </ul>
+
+    <!--  <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Know More!</a></li>
+
+      </ul>-->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+<section>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="post-title-main" itemprop="name headline">Robot Móvil con Sensor de Temperatura y Humedad</h1>
+      <p class="post-meta"><time datetime="2017-07-09T11:31:43-05:00" itemprop="datePublished">Jul 9, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">eyllanesc</span></span></p>
+      
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <h1 id="robot-móvil-con-sensor-de-temperatura-y-humedad">Robot Móvil con Sensor de Temperatura y Humedad</h1>
+
+<p>El proyecto que se implementará consiste en el monitoreo de sensores y control de actuadores mediante una interfaz web.</p>
+
+<p>En la siguiente imagen se muestra un esquema simple de la aplicación, esta se compondrá de todas principales:</p>
+
+<ol>
+  <li>
+    <p><strong>Aplicación WEB:</strong> muestra los datos guardados en la base de datos.</p>
+  </li>
+  <li>
+    <p><strong>Servicio o Demonio:</strong> lectura de los datos que proporciona los sensores y guardarlo en la base de datos.</p>
+  </li>
+  <li>
+    <p><strong>Control de Motores:</strong> Control de los motores</p>
+  </li>
+  <li>
+    <p><strong>Otros Clientes:</strong> Ejemplos de Posibles clientes</p>
+  </li>
+  <li>
+    <p><strong>Motion:</strong> Coniguramos motion para mostar la imagen de la cámara a traves de la interfaz web.</p>
+  </li>
+</ol>
+
+<p>Esta arquitectura tiene como cualidad de ser simple y escalable.</p>
+
+<p><img src="/images/server/imagen1.png" alt="" /></p>
+
+<h2 id="aplicación-web">Aplicación WEB:</h2>
+
+<p>Para esta parte implementaremos un servicio restful.</p>
+
+<p>Usaremos como framework <a href="http://www.django-rest-framework.org/">django</a> , para implementar con facilidad el servicio restful añadiremos <a href="http://www.django-rest-framework.org/">django rest framework</a> .</p>
+
+<p>Como primer paso instalaremos un entorno virtual llamado <strong>virtualenv</strong></p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo apt-get install -y python-pip
+pi@raspberrypi:~ $ sudo pip install virtualenv
+</code></pre>
+</div>
+
+<p>Teniendo instalado virtualenv, creamos un entorno de trabajo que llamaremos <strong>rpi-env</strong>:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ mkdir ~/projects
+pi@raspberrypi:~ $ cd ~/projects
+pi@raspberrypi:~/projects $ virtualenv rpi-env
+</code></pre>
+</div>
+<p>Lo activamos con:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~/projects $ source rpi-env/bin/activate
+</code></pre>
+</div>
+<p>Teniendo todo lo anterior instalamos django y django-rest-framework:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects $ pip install django
+(rpi-env) pi@raspberrypi:~/projects $ pip install djangorestframework
+</code></pre>
+</div>
+
+<p>Creamos un proyecto llamado <strong>Raspberry</strong> y una aplicación llamada <strong>Domo</strong>:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects $ django-admin.py startproject Raspberry
+(rpi-env) pi@raspberrypi:~/projects $ cd Raspberry
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py startapp Domo
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py migrate
+</code></pre>
+</div>
+
+<p>Para verificar que vamos por buen camino ejecutamos el siguiente comando para visualizar la estructura de carpetas generadas:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env)  pi@raspberrypi:~/projects/Raspberry $ tree 
+</code></pre>
+</div>
+
+<p>Debiendo obtener lo siguiente:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	.
+├── db.sqlite3
+├── Domo
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+├── manage.py
+├── Raspberry
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── README.md
+├── static
+│   ├── js
+│   │   ├── motors.js
+│   │   └── sensors.js
+│   └── vendor
+│       ├── jquery.min.js
+│       └── plotly-latest.min.js
+└── templates
+    └── index.html
+</code></pre>
+</div>
+
+<p>Vamos a hacer una pequeña prueba para ello editamos el archivo settings.py y añadimos  la ip del raspberry(en mi caso ‘192.168.2.9’)  en la linea ALLOWED_HOSTS = []</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Raspberry/settings.py
+</code></pre>
+</div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>...]
+	ALLOWED_HOSTS <span class="o">=</span> <span class="o">[</span><span class="s1">'192.168.2.9'</span><span class="o">]</span>
+<span class="o">[</span>...]
+</code></pre>
+</div>
+
+<p>Y luego lanzamos el servidor de desarrollo:</p>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py runserver 0.0.0.0:8000
+</code></pre>
+</div>
+
+<p>Ingresamos desde nuestra pc a un buscador y colocamos la ip del raspberry seguido del puerto 8000, en mi caso http://192.168.2.9:8000/ y deberiamos obtener algo similar a lo que muestra la siguiente imagen:</p>
+
+<p><img src="/images/server/screencapture.png" alt="" /></p>
+
+<p>Para apagar el servidor apretamos Ctrl+C</p>
+
+<p>Lo primero que haremos es crear un modelo de la base de datos, para ello usaremos la ORM de django, editamos el archivo models.py que se encuentra dentro de la carpeta Domo. Hacemos los mismo con serializers.py</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Domo/models.py 
+</code></pre>
+</div>
+
+<p><strong>Domo/models.py</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+
+<span class="k">class</span> <span class="nc">Sensor</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">date_created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FloatField</span><span class="p">()</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FloatField</span><span class="p">()</span>
+
+<span class="n">STATUS_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">'F'</span><span class="p">,</span> <span class="s">'Forward'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">'B'</span><span class="p">,</span> <span class="s">'Backward'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">'L'</span><span class="p">,</span> <span class="s">'Left'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">'R'</span><span class="p">,</span> <span class="s">'Right'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">'S'</span><span class="p">,</span> <span class="s">'Stop'</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Motor</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">date_created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">STATUS_CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">'S'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Domo/serializers.py
+</code></pre>
+</div>
+
+<p><strong>Domo/serializers.py</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+
+<span class="kn">from</span> <span class="nn">Domo.models</span> <span class="kn">import</span> <span class="n">Sensor</span><span class="p">,</span> <span class="n">Motor</span>
+
+
+<span class="k">class</span> <span class="nc">SensorSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Sensor</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'date_created'</span><span class="p">,</span> <span class="s">'temperature'</span><span class="p">,</span> <span class="s">'humidity'</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MotorSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Motor</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'date_created'</span><span class="p">,</span> <span class="s">'status'</span><span class="p">)</span>
+</code></pre>
+</div>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Domo/views.py
+</code></pre>
+</div>
+<p><strong>Domo/views.py</strong></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">viewsets</span>
+
+<span class="kn">from</span> <span class="nn">Domo.models</span> <span class="kn">import</span> <span class="n">Sensor</span><span class="p">,</span> <span class="n">Motor</span>
+<span class="kn">from</span> <span class="nn">Domo.serializers</span> <span class="kn">import</span> <span class="n">SensorSerializer</span><span class="p">,</span> <span class="n">MotorSerializer</span>
+
+
+<span class="k">class</span> <span class="nc">SensorViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Sensor</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-id'</span><span class="p">)</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">SensorSerializer</span>
+
+
+<span class="k">class</span> <span class="nc">MotorViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Motor</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-id'</span><span class="p">)</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">MotorSerializer</span>
+
+
+<span class="k">def</span> <span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'index.html'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Domo/urls.py
+</code></pre>
+</div>
+
+<p><strong>Domo/urls.py</strong></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">routers</span>
+
+<span class="kn">from</span> <span class="nn">Domo.views</span> <span class="kn">import</span> <span class="n">SensorViewSet</span><span class="p">,</span> <span class="n">MotorViewSet</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">routers</span><span class="o">.</span><span class="n">DefaultRouter</span><span class="p">()</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">r'sensors'</span><span class="p">,</span> <span class="n">SensorViewSet</span><span class="p">)</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">r'motors'</span><span class="p">,</span> <span class="n">MotorViewSet</span><span class="p">)</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">router</span><span class="o">.</span><span class="n">urls</span>
+</code></pre>
+</div>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Domo/admin.py
+</code></pre>
+</div>
+
+<p><strong>Domo/admin.py</strong></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+
+<span class="kn">from</span> <span class="nn">Domo.models</span> <span class="kn">import</span> <span class="n">Sensor</span><span class="p">,</span> <span class="n">Motor</span>
+
+
+<span class="nd">@admin.register</span><span class="p">(</span><span class="n">Sensor</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">SensorAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s">'date_created'</span><span class="p">,</span> <span class="s">'temperature'</span><span class="p">,</span> <span class="s">'humidity'</span><span class="p">)</span>
+
+
+<span class="nd">@admin.register</span><span class="p">(</span><span class="n">Motor</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MotorAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s">'date_created'</span><span class="p">,</span> <span class="s">'status'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Luego añadimos la aplicación Domo al proyecto:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Raspberry/settings.py
+</code></pre>
+</div>
+
+<p><strong>Raspberry/settings.py</strong></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)))</span>
+<span class="n">PROJECT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+
+    <span class="c"># Aplicaciones de terceros</span>
+    <span class="s">'rest_framework'</span><span class="p">,</span>
+    <span class="c"># Aplicaciones creadas</span>
+    <span class="s">'Domo'</span><span class="p">,</span>
+
+<span class="p">]</span>
+
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+
+<span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">'BACKEND'</span><span class="p">:</span> <span class="s">'django.template.backends.django.DjangoTemplates'</span><span class="p">,</span>
+        <span class="s">'DIRS'</span><span class="p">:</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'templates'</span><span class="p">)],</span> <span class="c"># modificamos esta parte</span>
+        <span class="s">'APP_DIRS'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">'OPTIONS'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'context_processors'</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s">'django.template.context_processors.debug'</span><span class="p">,</span>
+                <span class="s">'django.template.context_processors.request'</span><span class="p">,</span>
+                <span class="s">'django.contrib.auth.context_processors.auth'</span><span class="p">,</span>
+                <span class="s">'django.contrib.messages.context_processors.messages'</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">'/static/'</span>
+
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'../static/'</span><span class="p">)</span>
+
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># Put strings here, like "/home/html/static" or "C:/www/django/static".</span>
+    <span class="c"># Always use forward slashes, even on Windows.</span>
+    <span class="c"># Don't forget to use absolute paths, not relative paths.</span>
+    <span class="c"># os.path.join(PROJECT_DIR, "static").replace('\\', '/'),</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_DIR</span><span class="p">,</span> <span class="s">"static"</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'</span><span class="se">\\</span><span class="s">'</span><span class="p">,</span> <span class="s">'/'</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'DEFAULT_PAGINATION_CLASS'</span><span class="p">:</span> <span class="s">'rest_framework.pagination.PageNumberPagination'</span><span class="p">,</span>
+    <span class="s">'PAGE_SIZE'</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano Raspberry/urls.py
+</code></pre>
+</div>
+
+<p><strong>Raspberry/urls.py</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="s">"""Raspberry URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.10/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+
+<span class="kn">from</span> <span class="nn">Domo.views</span> <span class="kn">import</span> <span class="n">home</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^api/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'Domo.urls'</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">'core'</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^$'</span><span class="p">,</span> <span class="n">home</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ mkdir templates
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano templates/index.html
+</code></pre>
+</div>
+<p><strong>templates/index.html</strong></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>
+{% load static %}
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Proyecto<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">style=</span><span class="s">"text-align: center"</span><span class="nt">&gt;</span>Proyecto<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin:auto;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"forward()"</span><span class="nt">&gt;</span>Avanzar<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin:auto;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"backward()"</span><span class="nt">&gt;</span>Retroceder<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin:auto;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"left()"</span><span class="nt">&gt;</span>Izquierda<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin:auto;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"right()"</span><span class="nt">&gt;</span>Derecha<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin:auto;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"stop()"</span><span class="nt">&gt;</span>Parar<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align:center;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"ip_link"</span> <span class="na">src=</span><span class="s">""</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"demo-container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"placeholder"</span> <span class="na">style=</span><span class="s">"margin:0 auto;"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;br&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"width:1000px;margin:0 auto;"</span><span class="nt">&gt;</span>
+            Actualizar: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"myCheck"</span> <span class="na">checked</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;br&gt;</span>
+            Time : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"interval"</span> <span class="na">value=</span><span class="s">"1000"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;br&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">id=</span><span class="s">"lblLast"</span><span class="nt">&gt;&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"{% static 'vendor/jquery.min.js' %}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"{% static 'vendor/plotly-latest.min.js' %}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"{% static 'js/sensors.js' %}"</span><span class="nt">&gt;</span> <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"{% static 'js/motors.js' %}"</span><span class="nt">&gt;</span> <span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ mkdir static
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ mkdir static/vendor
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ wget -O static/vendor/jquery.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ wget -O static/vendor/plotly-latest.min.js https://cdn.plot.ly/plotly-latest.min.js
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ mkdir static/js
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano static/js/sensors.js
+</code></pre>
+</div>
+<p><strong>static/js/sensors.js</strong></p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">temperature</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">x</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="na">y</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="na">fill</span><span class="p">:</span> <span class="s1">'tonexty'</span><span class="p">,</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'scatter'</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'Temperatura'</span>
+    <span class="p">};</span>
+
+
+    <span class="kd">var</span> <span class="nx">humidity</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">x</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="na">y</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="na">fill</span><span class="p">:</span> <span class="s1">'tonexty'</span><span class="p">,</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'scatter'</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'Humedad'</span><span class="p">,</span>
+        <span class="na">yaxis</span><span class="p">:</span> <span class="s1">'y2'</span>
+    <span class="p">};</span>
+
+    <span class="kd">var</span> <span class="nx">layout</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">title</span><span class="p">:</span> <span class="s1">'Sensores'</span><span class="p">,</span>
+        <span class="na">showlegend</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">legend</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="na">y</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="na">traceorder</span><span class="p">:</span> <span class="s1">'normal'</span><span class="p">,</span>
+            <span class="na">font</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">family</span><span class="p">:</span> <span class="s1">'sans-serif'</span><span class="p">,</span>
+                <span class="na">size</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+                <span class="na">color</span><span class="p">:</span> <span class="s1">'#000'</span>
+            <span class="p">},</span>
+            <span class="na">bgcolor</span><span class="p">:</span> <span class="s1">'#E2E2E2'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">yaxis</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">title</span><span class="p">:</span> <span class="s1">'°C'</span><span class="p">,</span>
+            <span class="na">range</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="na">yaxis2</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">title</span><span class="p">:</span> <span class="s1">'%'</span><span class="p">,</span>
+            <span class="na">side</span><span class="p">:</span> <span class="s1">'right'</span><span class="p">,</span>
+            <span class="na">overlaying</span><span class="p">:</span> <span class="s1">'y'</span><span class="p">,</span>
+            <span class="na">range</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span><span class="nx">humidity</span><span class="p">,</span> <span class="nx">temperature</span><span class="p">];</span>
+
+    <span class="kd">var</span> <span class="nx">updateInterval</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="c1">// Load all posts on page load</span>
+    <span class="kd">function</span> <span class="nx">GetData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="na">url</span><span class="p">:</span> <span class="s2">"/api/sensors/"</span><span class="p">,</span> <span class="c1">// the endpoint</span>
+            <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="c1">// http method</span>
+            <span class="c1">// handle a successful response</span>
+            <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+               
+                <span class="nx">results</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s1">'results'</span><span class="p">];</span>
+                <span class="nx">temperature</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+                <span class="nx">temperature</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+
+                <span class="nx">humidity</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+                <span class="nx">humidity</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+
+                <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">temperature</span><span class="p">[</span><span class="s1">'x'</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">value</span><span class="p">[</span><span class="s1">'date_created'</span><span class="p">]));</span>
+                    <span class="nx">temperature</span><span class="p">[</span><span class="s1">'y'</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">[</span><span class="s1">'temperature'</span><span class="p">]);</span>
+
+                    <span class="nx">humidity</span><span class="p">[</span><span class="s1">'x'</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">value</span><span class="p">[</span><span class="s1">'date_created'</span><span class="p">]));</span>
+                    <span class="nx">humidity</span><span class="p">[</span><span class="s1">'y'</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">[</span><span class="s1">'humidity'</span><span class="p">]);</span>
+                <span class="p">});</span>
+            <span class="p">},</span>
+            <span class="c1">// handle a non-successful response</span>
+            <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">errmsg</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+    <span class="p">};</span>
+
+    <span class="kd">function</span> <span class="nx">update</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">GetData</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myCheck"</span><span class="p">).</span><span class="nx">checked</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">Plotly</span><span class="p">.</span><span class="nx">newPlot</span><span class="p">(</span><span class="s1">'placeholder'</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">layout</span><span class="p">);</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'lblLast'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"Temperatura Actual: "</span> <span class="o">+</span>
+                <span class="nx">temperature</span><span class="p">[</span><span class="s1">'y'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"&lt;br&gt;Humedad Actual: "</span> <span class="o">+</span> <span class="nx">humidity</span><span class="p">[</span><span class="s1">'y'</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">interval</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"interval"</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">interval</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">updateInterval</span> <span class="o">=</span> <span class="nx">interval</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">update</span><span class="p">,</span> <span class="nx">updateInterval</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">update</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ nano static/js/motors.js
+</code></pre>
+</div>
+<p><strong>static/js/motors.js</strong></p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">ip</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">host</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"ip_link"</span><span class="p">).</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"http://"</span> <span class="o">+</span> <span class="nx">ip</span> <span class="o">+</span> <span class="s2">":8081"</span><span class="p">;</span>
+
+<span class="c1">// Load all posts on page load</span>
+<span class="kd">function</span> <span class="nx">move</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s2">"/api/motors/"</span><span class="p">,</span> <span class="c1">// the endpoint</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span> <span class="c1">// http method</span>
+        <span class="c1">// handle a successful response</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="p">},</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'status'</span><span class="p">:</span> <span class="nx">state</span>
+        <span class="p">},</span>
+        <span class="c1">// handle a non-successful response</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">errmsg</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">forward</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">move</span><span class="p">(</span><span class="s1">'F'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">backward</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">move</span><span class="p">(</span><span class="s1">'B'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">left</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">move</span><span class="p">(</span><span class="s1">'L'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">right</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">move</span><span class="p">(</span><span class="s1">'R'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">stop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">move</span><span class="p">(</span><span class="s1">'S'</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py makemigrations
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py migrate
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py collectstatic
+(rpi-env) pi@raspberrypi:~/projects/Raspberry $ ./manage.py runserver 0.0.0.0:8000
+</code></pre>
+</div>
+
+<p><img src="/images/server/screencapture2.png" alt="" /></p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>(rpi-env) pi@raspberrypi:~/projects/Raspberry $ cd
+(rpi-env) pi@raspberrypi:~ $ deactivate
+</code></pre>
+</div>
+
+<p>Ahora instalamos el servidor Apache:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo apt-get install -y apache2 libapache2-mod-wsgi
+</code></pre>
+</div>
+
+<p>Despues de instalamos editamos el archivo 000-default.conf ubicado en  <strong>/etc/apache2/sites-available **, añadiendo lo siguiente antes de **&lt; /VirtualHost &gt;</strong></p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo nano /etc/apache2/sites-available/000-default.conf
+</code></pre>
+</div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>...]
+Alias /static /home/pi/projects/static
+&lt;Directory /home/pi/projects/static&gt;
+	Require all granted
+&lt;/Directory&gt;
+&lt;Directory /home/pi/projects/Raspberry/Raspberry&gt;
+	&lt;Files wsgi.py&gt;
+		Require all granted
+	&lt;/Files&gt;
+&lt;/Directory&gt;
+WSGIDaemonProcess projects python-path<span class="o">=</span>/home/pi/projects/Raspberry python-home<span class="o">=</span>/home/pi/projects/rpi-env
+WSGIProcessGroup projects
+WSGIScriptAlias / /home/pi/projects/Raspberry/Raspberry/wsgi.py
+&lt;/VirtualHost&gt;
+<span class="o">[</span>...]
+</code></pre>
+</div>
+
+<p>Luego le damos permisos a las carpetas y archivos.</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo chmod 664  ~/projects/Raspberry/db.sqlite3 
+pi@raspberrypi:~ $ sudo chown www-data ~/projects/Raspberry/db.sqlite3 
+pi@raspberrypi:~ $ sudo chown www-data ~/projects/Raspberry
+pi@raspberrypi:~ $ sudo service apache2 restart
+</code></pre>
+</div>
+
+<p>Ahora podremos ingresar directamente a la ip sin necesidad de indicar el puerto ni ejecutar ningun comando ya que se esta ejecutando el servidor de producción.</p>
+
+<h2 id="servicio-o-demonio">Servicio o Demonio</h2>
+
+<p>Creamos un archivo llamado <strong>myservice.py</strong></p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ mkdir myservice
+pi@raspberrypi:~ $ nano myservice/myservice.py
+</code></pre>
+</div>
+<p><strong>myservice.py</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">logging.handlers</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">Adafruit_DHT</span>
+
+
+<span class="k">def</span> <span class="nf">getSensors</span><span class="p">():</span>
+    <span class="n">humidity</span><span class="p">,</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">Adafruit_DHT</span><span class="o">.</span><span class="n">read_retry</span><span class="p">(</span><span class="n">Adafruit_DHT</span><span class="o">.</span><span class="n">DHT11</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">humidity</span>
+<span class="c"># Deafults</span>
+<span class="n">LOG_FILENAME</span> <span class="o">=</span> <span class="s">"/tmp/myservice.log"</span>
+<span class="n">LOG_LEVEL</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>  <span class="c"># Could be e.g. "DEBUG" or "WARNING"</span>
+
+<span class="c"># Define and parse command line arguments</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">"My simple Python service"</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">"-l"</span><span class="p">,</span> <span class="s">"--log"</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">"file to write log to (default '"</span> <span class="o">+</span> <span class="n">LOG_FILENAME</span> <span class="o">+</span> <span class="s">"')"</span><span class="p">)</span>
+
+<span class="c"># If the log file is specified on the command line then override the default</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">log</span><span class="p">:</span>
+        <span class="n">LOG_FILENAME</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">log</span>
+
+<span class="c"># Configure logging to log to a file, making a new file at midnight and keeping the last 3 day's data</span>
+<span class="c"># Give the logger a unique name (good practice)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="c"># Set the log level to LOG_LEVEL</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LOG_LEVEL</span><span class="p">)</span>
+<span class="c"># Make a handler that writes to a file, making a new file at midnight and keeping 3 backups</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">TimedRotatingFileHandler</span><span class="p">(</span><span class="n">LOG_FILENAME</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="s">"midnight"</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="c"># Format each log message like this</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">'</span><span class="si">%(asctime)</span><span class="s">s </span><span class="si">%(levelname)-8</span><span class="s">s </span><span class="si">%(message)</span><span class="s">s'</span><span class="p">)</span>
+<span class="c"># Attach the formatter to the handler</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="c"># Attach the handler to the logger</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="c"># Make a class we can use to capture stdout and sterr in the log</span>
+<span class="k">class</span> <span class="nc">MyLogger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+                <span class="s">"""Needs a logger and a logger level."""</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">level</span>
+
+        <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+                <span class="c"># Only log if there is a message (not just a new line)</span>
+                <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">""</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+
+<span class="c"># Replace stdout with logging to file at INFO level</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">MyLogger</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="c"># Replace stderr with logging to file at ERROR level</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">MyLogger</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'/home/pi/projects/Raspberry/db.sqlite3'</span><span class="p">)</span>
+<span class="n">curs</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"INSERT INTO Domo_sensor(date_created, temperature, humidity) VALUES( (?), (?), (?))"</span><span class="p">,</span> <span class="n">getSensors</span><span class="p">())</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre>
+</div>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ nano myservice.sh
+</code></pre>
+</div>
+<p><strong>myservice.sh</strong></p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+
+<span class="c">### BEGIN INIT INFO</span>
+<span class="c"># Provides:          myservice</span>
+<span class="c"># Required-Start:    $remote_fs $syslog</span>
+<span class="c"># Required-Stop:     $remote_fs $syslog</span>
+<span class="c"># Default-Start:     2 3 4 5</span>
+<span class="c"># Default-Stop:      0 1 6</span>
+<span class="c"># Short-Description: Put a short description of the service here</span>
+<span class="c"># Description:       Put a long description of the service here</span>
+<span class="c">### END INIT INFO</span>
+
+<span class="c"># Change the next 3 lines to suit where you install your script and what you want to call it</span>
+<span class="nv">DIR</span><span class="o">=</span>/usr/local/bin/myservice
+<span class="nv">DAEMON</span><span class="o">=</span><span class="nv">$DIR</span>/myservice.py
+<span class="nv">DAEMON_NAME</span><span class="o">=</span>myservice
+
+<span class="c"># Add any command line options for your daemon here</span>
+<span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">""</span>
+
+<span class="c"># This next line determines what user the script runs as.</span>
+<span class="c"># Root generally not recommended but necessary if you are using the Raspberry Pi GPIO from Python.</span>
+<span class="nv">DAEMON_USER</span><span class="o">=</span>root
+
+<span class="c"># The process ID of the script when it runs is stored here:</span>
+<span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$DAEMON_NAME</span>.pid
+
+. /lib/lsb/init-functions
+
+do_start <span class="o">()</span> <span class="o">{</span>
+    log_daemon_msg <span class="s2">"Starting system </span><span class="nv">$DAEMON_NAME</span><span class="s2"> daemon"</span>
+    start-stop-daemon --start --background --pidfile <span class="nv">$PIDFILE</span> --make-pidfile --user <span class="nv">$DAEMON_USER</span> --chuid <span class="nv">$DAEMON_USER</span> --startas <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
+    log_end_msg <span class="nv">$?</span>
+<span class="o">}</span>
+do_stop <span class="o">()</span> <span class="o">{</span>
+    log_daemon_msg <span class="s2">"Stopping system </span><span class="nv">$DAEMON_NAME</span><span class="s2"> daemon"</span>
+    start-stop-daemon --stop --pidfile <span class="nv">$PIDFILE</span> --retry 10
+    log_end_msg <span class="nv">$?</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
+
+    </span>start|stop<span class="p">)</span>
+        do_<span class="k">${</span><span class="nv">1</span><span class="k">}</span>
+        <span class="p">;;</span>
+
+    restart|reload|force-reload<span class="p">)</span>
+        do_stop
+        do_start
+        <span class="p">;;</span>
+
+    status<span class="p">)</span>
+        status_of_proc <span class="s2">"</span><span class="nv">$DAEMON_NAME</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$DAEMON</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0 <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
+        <span class="p">;;</span>
+
+    <span class="k">*</span><span class="p">)</span>
+        <span class="nb">echo</span> <span class="s2">"Usage: /etc/init.d/</span><span class="nv">$DAEMON_NAME</span><span class="s2"> {start|stop|restart|status}"</span>
+        <span class="nb">exit </span>1
+        <span class="p">;;</span>
+
+<span class="k">esac</span>
+<span class="nb">exit </span>0
+</code></pre>
+</div>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo chmod 755 myservice/myservice.py
+pi@raspberrypi:~ $ sudo chmod +x myservice.sh
+pi@raspberrypi:~ $ sudo cp myservice.sh /etc/init.d
+pi@raspberrypi:~ $ sudo update-rc.d myservice.sh defaults
+pi@raspberrypi:~ $ sudo cp -rf myservice/ /usr/local/bin/
+pi@raspberrypi:~ $ sudo service myservice start
+</code></pre>
+</div>
+<p>Salida:
+<img src="/images/server/screencapture3.png" alt="" /></p>
+
+<h2 id="control-de-motores">Control de Motores:</h2>
+
+<p>Luego implementamos la clase <strong>Car</strong>  que se encarga de manejar los movimientos del vehículo.</p>
+
+<p><strong>Car.py</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="kn">as</span> <span class="nn">GPIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">motorL</span><span class="p">,</span> <span class="n">motorR</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+        <span class="s">"""
+        Manejar los motores
+        :param pins:
+        [in1, in2, in3, in4]
+        """</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pinsA</span> <span class="o">=</span> <span class="n">motorL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pinsB</span> <span class="o">=</span> <span class="n">motorR</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span> 
+
+        <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsA</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pinsB</span><span class="p">):</span>
+            <span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">motorOn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pins</span><span class="p">):</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">False</span><span class="p">)</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">motorOff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pins</span><span class="p">):</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">False</span><span class="p">)</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">motorReverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pins</span><span class="p">):</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorOn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorOn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsB</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorReverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorReverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsB</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorOn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsB</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorReverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsA</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorOn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorReverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsB</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorOff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motorOff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinsB</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p>Ahora creamos la clase <strong>Data</strong> que se encarga de obtener los datos, filtrar el último y verificar si este ha sido creado en menos de 1 segundo. Si cumple lo anterior obtenemos el comando  <strong>status</strong> y realizamos la tarea respectiva.</p>
+
+<p><strong>main.py</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">Car</span> <span class="kn">import</span> <span class="n">Car</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="kn">as</span> <span class="nn">GPIO</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="k">class</span> <span class="nc">Data</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">before</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">'date'</span><span class="p">]</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">"</span><span class="si">%</span><span class="s">a, </span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">b </span><span class="si">%</span><span class="s">Y </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S </span><span class="si">%</span><span class="s">Z"</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'results'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'date_created'</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">dT</span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S.</span><span class="si">%</span><span class="s">f"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">before</span> <span class="o">==</span> <span class="n">date</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">before</span> <span class="o">=</span> <span class="n">date</span>
+        <span class="c"># u = datetime.utcnow()</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">u</span> <span class="o">-</span> <span class="n">date</span>
+        <span class="k">if</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">'status'</span><span class="p">]</span>
+
+
+<span class="c">#http://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib</span>
+<span class="k">def</span> <span class="nf">get_ip</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c"># doesn't even have to be reachable</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s">'10.255.255.255'</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">IP</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">IP</span> <span class="o">=</span> <span class="s">'127.0.0.1'</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">IP</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">get_ip</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s">'http://'</span><span class="o">+</span><span class="n">host</span><span class="o">+</span><span class="s">'/api/motors/'</span><span class="p">)</span>
+    <span class="n">motorL</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+    <span class="n">motorR</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+    <span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">motorL</span><span class="p">,</span> <span class="n">motorR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">resp</span> <span class="o">==</span> <span class="s">'F'</span><span class="p">:</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">resp</span> <span class="o">==</span> <span class="s">'B'</span><span class="p">:</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">resp</span> <span class="o">==</span> <span class="s">'L'</span><span class="p">:</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">left</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">resp</span> <span class="o">==</span> <span class="s">'R'</span><span class="p">:</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">right</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">resp</span> <span class="o">==</span> <span class="s">'S'</span><span class="p">:</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span><span class="nb">KeyboardInterrupt</span><span class="p">,</span> <span class="nb">SystemExit</span><span class="p">):</span>
+            <span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+            <span class="k">break</span>
+            
+</code></pre>
+</div>
+
+<h2 id="otros-clientes">Otros Clientes</h2>
+
+<h3 id="petición-de-datos">Petición de Datos</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'http://192.168.2.9/api/sensors/'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">():</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'date_created'</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">dT</span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S.</span><span class="si">%</span><span class="s">f"</span><span class="p">)</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">'humidity'</span><span class="p">]</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">'temperature'</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Fecha: {}, Humedad: {}, Temperatura: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">humidity</span><span class="p">,</span> <span class="n">temperature</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<h3 id="envio-de-datos">Envio de Datos:</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'http://192.168.2.9/api/sensors/'</span>
+
+ <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+	<span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">dT</span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S.</span><span class="si">%</span><span class="s">fZ'</span><span class="p">)</span>
+
+	<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Content-type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">}</span>
+	<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span>  <span class="n">data</span> <span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">'date_created'</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span><span class="s">'temperature'</span><span class="p">:</span> <span class="mf">11.1</span><span class="p">,</span> <span class="s">'humidity'</span><span class="p">:</span> <span class="mf">10.1</span><span class="p">}),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+	<span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+	<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h3 id="esp8266">ESP8266</h3>
+
+<p>Para realizar esta parte es necesario tener instalado las herramientas necesarias para compilar y quemar el <em>ESP8266</em></p>
+
+<h3 id="esp8266-restclient-link">esp8266-restclient <a href="https://github.com/csquared/arduino-restclient">link</a></h3>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>cd ~/Documents/Arduino
+mkdir libraries
+cd libraries
+git clone https://github.com/dakaz/esp8266-restclient.git RestClient
+</code></pre>
+</div>
+
+<h3 id="simpledht-link">SimpleDHT <a href="https://github.com/winlinvip/SimpleDHT">link</a></h3>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>cd ~/Documents/Arduino
+mkdir libraries
+cd libraries
+git clone https://github.com/winlinvip/SimpleDHT.git SimpleDHT
+</code></pre>
+</div>
+
+<p>Código del cliente:</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;RestClient.h&gt;
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;SimpleDHT.h&gt;
+</span>
+
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ssid</span>     <span class="o">=</span> <span class="s">"{your ssid}"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"{your password}"</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">host</span> <span class="o">=</span> <span class="s">"{your ip or domain}"</span><span class="p">;</span>
+
+<span class="n">RestClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">RestClient</span><span class="p">(</span><span class="n">host</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">pinDHT11</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">SimpleDHT11</span> <span class="n">dht11</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">setContentType</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">);</span>
+    <span class="c1">// We start by connecting to a WiFi network
+</span>    
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Connecting to "</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ssid</span><span class="p">);</span>
+    
+    <span class="cm">/* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
+     would try to act as both a client and an access-point and could cause
+     network-issues with your other WiFi-devices on your WiFi-network. */</span>
+    <span class="n">WiFi</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="n">WIFI_STA</span><span class="p">);</span>
+    <span class="n">WiFi</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"."</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"WiFi connected"</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"IP address: "</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">localIP</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="n">String</span> <span class="n">response</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="kt">void</span> <span class="n">loop</span><span class="p">(){</span>
+    <span class="n">byte</span> <span class="n">temperature</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">byte</span> <span class="n">humidity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dht11</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">pinDHT11</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">temperature</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">humidity</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Read DHT11 failed."</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">response</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+    <span class="n">sprintf</span> <span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">"{</span><span class="se">\"</span><span class="s">temperature</span><span class="se">\"</span><span class="s">: %d, </span><span class="se">\"</span><span class="s">humidity</span><span class="se">\"</span><span class="s">: %d}"</span><span class="p">,(</span><span class="kt">int</span><span class="p">)</span><span class="n">temperature</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">humidity</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">statusCode</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">"/api/sensors/"</span><span class="p">,</span> <span class="n">buffer</span> <span class="p">,</span> <span class="o">&amp;</span><span class="n">response</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">statusCode</span> <span class="o">==</span> <span class="mi">201</span><span class="p">){;</span>
+        <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="motion">Motion</h2>
+
+<p>Creamos un directorio para guardar las imagenes:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ mkdir  /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chgrp motion /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chmod g+rwx /home/pi/Monitor
+pi@raspberrypi:~ $ sudo chmod -R g+w /home/pi/Monitor/
+</code></pre>
+</div>
+<p>Instalamos la librería <strong>motion</strong>.</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo apt-get install -y motion
+</code></pre>
+</div>
+<p>Editamos el archivo motion.conf, buscando los siguientes campos y los cambiamos a lo siguientes valores:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo nano /etc/motion/motion.conf
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>stream_localhost off
+webcontrol_localhost off
+framerate 60
+target_dir /home/pi/Monitor
+</code></pre>
+</div>
+
+<p>Editamos el archivo <strong>/etc/default/motion</strong> y cambiamos de <strong>no</strong> a <strong>yes</strong></p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo nano /etc/default/motion
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>start_motion_daemon=yes
+</code></pre>
+</div>
+
+<p>Despues ejecutamos lo siguiente:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo service motion stop
+pi@raspberrypi:~ $ sudo service motion start
+</code></pre>
+</div>
+
+<p>Y Accedemos a la imagen de la cámara a traves de la url desde nuestro buscador: http://{your-rpi-address}:8081/</p>
+
+<p>Obteniendo lo siguiente:</p>
+
+<p><img src="/images/server/Screenshot.png" alt="" /></p>
+
+<p>Las imagenes y videos pueden llenar el almacenamiento, por ello configuramos que pasada los 15 minutos despues de cada hora borre todos excepto las 20 ultimas imagenes:</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo crontab -e
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>15 * * * * (date; ls /home/pi/Monitor/*.jpg | head -n -20 | xargs rm -v) &gt;&gt; /tmp/images_deleted 2&gt;&amp;1
+</code></pre>
+</div>
+
+<h2 id="resumen">Resumen</h2>
+
+<p>Para los alumnos del curso es necesario ejecutar los siguientes comandos:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get install -y python-dev
+sudo apt-get install -y python-rpi.gpio
+sudo apt-get install -y python-pip
+sudo pip install adafruit_python_dht
+sudo pip install virtualenv
+mkdir ~/projects
+cd ~/projects
+virtualenv rpi-env
+source rpi-env/bin/activate
+pip install django
+pip install djangorestframework
+sudo apt-get install -y apache2 libapache2-mod-wsgi
+sudo apt-get install -y motion
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+</section>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container footer-content">
+    Hecho <i class ="fa fa-heart"></i> por eyllanesc<br>
+    Desarrollado con Jekyll
+  </div>
+</nav>
+
+  </body>
+
+</html>

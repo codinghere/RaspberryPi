@@ -6,8 +6,6 @@ categories: Raspberry
 author: "eyllanesc"
 ---
 
-# Introducción al Raspberry Pi
-
 ![]({{ site.baseurl }}/images/intro/anio.jpg)
 
 
