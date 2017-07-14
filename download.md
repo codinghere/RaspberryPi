@@ -24,7 +24,7 @@ permalink: /download/
     </center>
   </div>
   <center>GitHub Repository
-    <h2><a href="http://github.com/hemangsk/DevJournal"><i class="fa fa-github"></i></a></h2>
+    <h2><a href="{{ site.github.repository_url }}"><i class="fa fa-github"></i></a></h2>
   </center>
   <div class="intro">
     <br />
