@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introducción al Raspberry Pi"
-date:   2017-07-17 22:01:43 +0530
+date:   2017-07-07 22:01:43 +0530
 categories: Raspberry
 author: "eyllanesc"
 ---
