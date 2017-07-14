@@ -1,21 +1,44 @@
 ---
 layout: default
-title: Raspberry Pi
 ---
 
-<H1>{{page.title}}</H1>
+<section>
+  <div class="jumbotron">
+    <div class="container">
+      {{site.description}}
 
-
-<datalist id="browsers">
-  {% for post in site.posts reversed %}
-    <option value="div-{{forloop.index}}">
-  {% endfor %}
-</datalist>
-
-<div id="pagination-demo"></div>
-
-{% for post in site.posts reversed %}
-	<div id="div-{{forloop.index}}" style="display:none;"> 
-    	{{post.content}}
     </div>
-{% endfor %}
+
+</div>
+</section>
+
+<section id="page-content">
+  <div class="container">
+    <div class="post-list">
+  {%  for post in site.posts %}
+  <div class="post-box">
+    <div class="post-title">
+    <a class="post-title" href="{{post.url | prepend:site.baseurl }}" > {{ post.title }}</a>
+    </div>
+    <div class="post-excerpt">
+      {{ post.content | strip_html | truncatewords:20}}
+    </div>
+    <div class="posted">
+      posted on
+      <span class="posted-on">
+
+        {{ post.date | date: "%A, %B %-d, %Y" }}
+      </span>
+      <span class="in">
+        in
+      </span>
+      <span class="categories-on">
+        {% for category in post.categories%}
+        {{category}} &nbsp;{% if forloop.last %}{% else %},{% endif %}
+        {% endfor %}
+      </span>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+</section>
