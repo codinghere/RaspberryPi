@@ -24,10 +24,13 @@ layout: default
       {{ post.content | strip_html | truncatewords:20}}
     </div>
     <div class="posted">
-      posted on
+      Publicado el
       <span class="posted-on">
 
-        {{ post.date | date: "%A, %B %-d, %Y" }}
+        {{ post.date | date: "%A, %-d de %B del %Y" |
+         replace: "January","Enero" | replace: "Februar","Febrero" | replace:"March","Marzo" |replace:"April","Abril" | replace:"May","Mayo" | replace:"June","Junio" | replace:"July","Julio" | replace:"August","Agosto" | replace:"September","Septiembre" | replace: "October", "Octubre"| replace: "November", "Noviembre"| 
+         replace: "December", "Diciembre" |
+         replace: "Monday", "Lunes" | replace: "Tuesday", "Martes" | replace: "Wednesday", "Miércoles" | replace: "Thursday", "Jueves" | replace: "Friday", "Viernes"| replace: "Saturday", "Sábado" | replace: "Sunday", "Domingo"}}
       </span>
       <span class="in">
         in
