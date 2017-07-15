@@ -21,3 +21,5 @@ github_username:  eyllanesc
 
 # Build settings
 markdown: kramdown
+
+plugins: [jekyll-gist]
