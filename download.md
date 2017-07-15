@@ -7,13 +7,12 @@ permalink: /download/
 <span class="page-tagline">¿Te gusto? Si deseas descargalo</span>
 
 
-
 <div class="post-content-download">
   <p>
     <br />
   </p>
   <div class="download">
-    <center><i class="fa fa-heart"></i> Dale un estrella si te gusto!</center>
+    <center><i class="fa fa-heart"></i> Dale un estrella si te gusto y siguenos!</center>
     <br />
     <center>
       <iframe src="https://ghbtns.com/github-btn.html?user=CodeHuntersLab&amp;repo=RaspberryPi&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
