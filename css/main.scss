@@ -84,6 +84,14 @@ padding-bottom: 2em;
   color:  #FFC600 !important;
 }
 
+.table td{
+   text-align: center;   
+}
+
+.table th{
+   text-align: center;   
+}
+
 .post-excerpt{
   color: white !important;
 padding-top: 0.5em;
@@ -95,7 +103,7 @@ font-size: 18px !important;
   color: #f8f8f8 !important;
 }
 .post-content{
-  font-size: 25px;
+  font-size: 18px;
   text-align: justify;
   padding-bottom: 5em;
 }

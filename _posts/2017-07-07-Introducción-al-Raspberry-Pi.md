@@ -61,19 +61,119 @@ author: "eyllanesc"
 <img  src="{{ site.baseurl }}/images/intro/model3.jpg" width="500" alt=""/>
 
 
-|               |RPI 1 Model A		|RPI 1 Model A+	 	|RPI 1 Model B		|RPI 1 Model B+	|RPI Model 2 Model B| RPI Zero| RPI 3 Model B|
-|---------------|:-------------:|:-------------:|:-------------:|:-----------:|:-------------:|:--------------:|:-------:|
-|SoC|	Broadcom BCM2835| Broadcom BCM2835|Broadcom BCM2835|Broadcom BCM2835|Broadcom BCM2836| Broadcom BCM2835|BCM287 |
-|CPU| ARMv6 700 MHz| ARM11 ARMv6 700 MHz| ARM11 ARMv6 700 MHz| ARM11 ARMv6 700 MHz| ARM11 ARMv7 ARM Cortex-A7 4 núcleos @ 900 MHz| ARM11 ARMv6 Dual Core 1 GHz| ARM cortex A53 1.2GHz 64bit 4 núcleos|
-|GPU|Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0 |Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0| Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0| Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0	| Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0| Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0|Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0 |
-|RAM| 256 MB LPDDR SDRAM 400 MHz| 256 MB LPDDR SDRAM 400 MHz| 512 MB LPDDR SDRAM 400 MHz| 512 MB LPDDR SDRAM 400 MHz| 1 GB LPDDR2 SDRAM 450 MHz| 512 MB LPDDR SDRAM 400 MHz| 1 GB LPDDR2 SDRAM 450 MHz|
-|USB| 1 USB 2.0|1 USB 2.0|2 USB 2.0|4 USB 2.0|4 USB 2.0| 1 microUSB 2.0| 4 USB 2.0|
-|Salidas de vídeo|HDMI 1.4 @ 1920x1200 píxeles|HDMI 1.4 @ 1920x1200 píxeles|HDMI 1.4 @ 1920x1200 píxeles|HDMI 1.4 @ 1920x1200 píxeles|HDMI 1.4 @ 1920x1200 píxeles|mini-HDMI 1.4 @ 1920x1200 píxeles | HDMI 1.4 @ 1920x1200 píxeles |
-|Almacenamiento|SD/MMC|microSD|SD/MMC|microSD|microSD|microSD| microSD|
-|Ethernet|No|No|Sí, 10/100 Mbps|Sí, 10/100 Mbps|Sí, 10/100 Mbps| No | 10/100 Mbit/s Ethernet 802.11n wireless Bluetooth 4.1 |
-|Tamaño	|85,60mmx56,5 mm|65mmx56,5 mm|85,60mmx56,5 mm|85,60mmx56,5 mm|85,60mmx56,5 mm|65mmx30mm|85,60mmx56,5 mm|
-|Peso   |45 g.|23 g.|45 g.|45 g.|45 g.|9 g| 45g|
-|Precio	|25 dólares|20 dólares|35 dólares|35 dólares|35 dólares|5 dólares| 35 dólares|
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+
+<table class="table table-responsive table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>RPI 1 Model A</th>
+      <th>RPI 1 Model A+</th>
+      <th>RPI 1 Model B</th>
+      <th>RPI 1 Model B+</th>
+      <th>RPI 2 Model B</th>
+      <th>RPI Zero</th>
+      <th>RPI 3 Model B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SoC</th>
+      <td colspan="4" >Broadcom BCM2835</td>
+      <td>Broadcom BCM2836</td>
+      <td>Broadcom BCM2835</td>
+      <td>Broadcom BCM2837</td>
+    </tr>
+    <tr>
+      <th>CPU</th>
+      <td>ARMv6 700 MHz</td>
+      <td colspan="3" >ARM11 ARMv6 700 MHz</td>
+      <td>ARM11 ARMv7 ARM Cortex-A7 4 núcleos @ 900 MHz</td>
+      <td>ARM11 ARMv6 Dual Core 1 GHz</td>
+      <td>ARM cortex A53 1.2GHz 64bit 4 núcleos</td>
+    </tr>
+
+    <tr>
+      <th>GPU</th>
+      <td colspan="7" >Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+    </tr>
+
+    <tr>
+      <th>RAM</th>
+      <td colspan="4" >Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td>1 GB LPDDR2 SDRAM 450 MHz</td>
+      <td>512 MB LPDDR SDRAM 400 MHz</td>
+      <td>1 GB LPDDR2 SDRAM 450 MHz</td>
+    </tr>
+
+    <tr>
+      <th>USB</th>
+      <td colspan="2" >1 USB 2.0</td>
+      <td>2 USB 2.0</td>
+      <td colspan="2" >4 USB 2.0</td>
+      <td>1 microUSB 2.0</td>
+      <td>4 USB 2.0</td>
+    </tr>
+
+    <tr>
+      <th>Salidas de vídeo</th>
+      <td colspan="5" >HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td>mini-HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td>HDMI 1.4 @ 1920x1200 píxeles</td>
+    </tr>
+
+    <tr>
+      <th>Almacenamiento</th>
+      <td>SD/MMC</td>
+      <td>microSD</td>
+      <td>SD/MMC</td>
+      <td colspan="4">microSD</td>
+    </tr>
+
+    <tr>
+      <th>Ethernet</th>
+      <td colspan="2">No</td>
+      <td colspan="3">Sí, 10/100 Mbps</td>
+      <td>No</td>
+      <td>10/100 Mbit/s Ethernet 802.11n wireless Bluetooth 4.1</td>
+    </tr>
+
+    <tr>
+      <th>Tamaño</th>
+      <td>85,60mmx56,5mm</td>
+      <td>65mmx56,5mm</td>
+      <td colspan="3">85,60mmx56,5mm</td>
+      <td>65mmx30mm</td>
+      <td>85,60mmx56,5mm</td>
+    </tr>
+
+    <tr>
+      <th>Peso</th>
+      <td>45 g.</td>
+      <td>23 g.</td>
+      <td colspan="3">45 g.</td>
+      <td>9 g.</td>
+      <td>45 g.</td>
+    </tr>
+
+    <tr>
+      <th>Precio</th>
+      <td>25 dólares</td>
+      <td>20 dólares</td>
+      <td colspan="3">35 dólares</td>
+      <td>5 dólares</td>
+      <td>35 dólares</td>
+    </tr>
+
+  </tbody>
+</table>
+
 
 ## Herramientas
 
