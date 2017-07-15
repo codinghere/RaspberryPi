@@ -74,6 +74,7 @@ a:hover{
 .post-list{
 
     text-align: center;
+font-size: 18px;
 
 }
 .post-box{
@@ -83,13 +84,14 @@ padding-bottom: 2em;
 
 .post-title{
   font-size: 20px !important;
-color:  #FFC600 !important;
+  color:  #FFC600 !important;
 }
 
 .post-excerpt{
   color: white !important;
 padding-top: 0.5em;
 padding-bottom: 0.3em;
+font-size: 18px !important;
 }
 .post-title-main{
   text-align: center;
@@ -159,7 +161,7 @@ text-align: center;
 }
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$base-font-size:   18px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
