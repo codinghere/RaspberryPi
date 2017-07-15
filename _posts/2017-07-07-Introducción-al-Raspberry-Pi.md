@@ -15,7 +15,7 @@ author: "eyllanesc"
 2. Nació para estimular la enseñanza de ciencias de la computación en las escuelas del Reino Unido( plataforma educativa).
 3. Actualmente es una plataforma de desarrollo.
 
-![]({{ site.baseurl }}/images/intro/proyectos.jpg)
+<img class="img-responsive" src="{{ site.baseurl }}/images/intro/proyectos.jpg" height="400" style="width:100%">
 
 ## Recursos
 

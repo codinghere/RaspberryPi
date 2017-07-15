@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Curso de Raspberry" property="og:site_name">
+
+  <meta content="Introducción al Raspberry Pi" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+  <meta content="<h3>Bienvenidos!</h3><h1>Curso de Raspberry Pi</h1>" property="og:description">
+
+
+  <meta content="http://localhost:4000/raspberry/2017/07/07/Introducci%C3%B3n-al-Raspberry-Pi.html" property="og:url">
+
+
+  <meta content="2017-07-07T11:31:43-05:00" property="article:published_time">
+  <meta content="http://localhost:4000/acerca/" property="article:author">
+
+
+  <meta property="og:image" content="">
+
+
+  
+  <meta content="Raspberry" property="article:section">
+  
+
+
+  
+
+  <title>Introducción al Raspberry Pi</title>
+  <meta name="description" content="">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://localhost:4000/raspberry/2017/07/07/Introducci%C3%B3n-al-Raspberry-Pi.html">
+  <link rel="alternate" type="application/rss+xml" title="Curso de Raspberry" href="http://localhost:4000/feed.xml">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+</head>
+
+
+  <body>
+<section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Curso de Raspberry</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        
+        <li><a href="/about/">Acerca</a></li>
+
+        
+
+        
+        
+        <li><a href="/download/">Descargar</a></li>
+
+        
+
+        
+        
+
+        
+        
+
+        
+
+
+      </ul>
+
+    <!--  <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Know More!</a></li>
+
+      </ul>-->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+<section>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="post-title-main" itemprop="name headline">Introducción al Raspberry Pi</h1>
+      <p class="post-meta"><time datetime="2017-07-07T11:31:43-05:00" itemprop="datePublished">Jul 7, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">eyllanesc</span></span></p>
+      
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p><img src="/images/intro/anio.jpg" alt="" /></p>
+
+<h2 id="qué-es-un-raspberry-pi">¿Qué es un Raspberry pi?</h2>
+
+<ol>
+  <li>Es un ordenador de placa reducida de bajo coste.</li>
+  <li>Nació para estimular la enseñanza de ciencias de la computación en las escuelas del Reino Unido( plataforma educativa).</li>
+  <li>Actualmente es una plataforma de desarrollo.</li>
+</ol>
+
+<p><img class="img-responsive" src="/images/intro/proyectos.jpg" height="400" style="width:100%" /></p>
+
+<h2 id="recursos">Recursos</h2>
+
+<ul>
+  <li>SoC: Broadcom BCM2835 (CPU + GPU + DSP + SDRAM + puerto USB)</li>
+  <li>CPU: ARM 1176JZF-S a 700 MHz (familia ARM11)</li>
+  <li>Juego de instrucciones: RISC de 32 bits</li>
+  <li>GPU: Broadcom VideoCore IV, OpenGL ES 2.0, MPEG-2 y VC-1 (con licencia), 1080p30 H.264/MPEG-4 AVC</li>
+  <li>Memoria (SDRAM): 512 MiB (compartidos con la GPU)</li>
+  <li>Puertos USB 2.0: 4</li>
+  <li>Entradas de video: Conector MIPI CSI que permite instalar un</li>
+  <li>módulo de cámara desarrollado por la RPF</li>
+  <li>Salidas de video: Conector RCA (PAL y NTSC), HDMI (rev1.3 y 1.4), Interfaz DSI para panel LCD</li>
+  <li>Salidas de audio: Conector de 3.5 mm, HDMI</li>
+  <li>Almacenamiento integrado: MicroSD</li>
+  <li>Conectividad de red: 10/100 Ethernet (RJ-45) via hub USB</li>
+  <li>Periféricos de bajo nivel: GPIO, SPI, I2C, UART</li>
+  <li>Consumo energético: 600 mA, (3.0 W)</li>
+  <li>Fuente de alimentación: 5V v´ıa Micro USB o GPIO header</li>
+  <li>Dimensiones: 85.60mm × 53.98mm</li>
+  <li>Sistemas operativos soportados:GNU/Linux: Debian (Raspbian), Fedora (Pidora), Arch Linux (Arch Linux ARM), Slackware Linux. RISC OS</li>
+</ul>
+
+<h2 id="modelos">Modelos</h2>
+
+<h3 id="rpi-1-modelo-a">RPI 1 Modelo A</h3>
+<p><img src="/images/intro/ModelA.png" width="500" alt="" /></p>
+
+<h3 id="rpi-1-modelo-a-1">RPI 1 Modelo A+</h3>
+<p><img src="/images/intro/ModelA+.png" width="500" alt="" /></p>
+
+<h3 id="rpi-1-modelo-b">RPI 1 Modelo B</h3>
+<p><img src="/images/intro/ModelB.png" width="500" alt="" /></p>
+
+<h3 id="rpi-1-modelo-b-1">RPI 1 Modelo B+</h3>
+<p><img src="/images/intro/ModelB+.jpg" width="500" alt="" /></p>
+
+<h3 id="rpi-2-modelo-b">RPI 2 Modelo B</h3>
+<p><img src="/images/intro/Model2B.jpeg" width="500" alt="" /></p>
+
+<h3 id="rpi-zero">RPI ZERO</h3>
+<p><img src="/images/intro/modelzero.jpg" width="500" /></p>
+
+<h3 id="rpi-3-modelo-b">RPI 3 Modelo B</h3>
+<p><img src="/images/intro/model3.jpg" width="500" alt="" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th style="text-align: center">RPI 1 Model A</th>
+      <th style="text-align: center">RPI 1 Model A+</th>
+      <th style="text-align: center">RPI 1 Model B</th>
+      <th style="text-align: center">RPI 1 Model B+</th>
+      <th style="text-align: center">RPI Model 2 Model B</th>
+      <th style="text-align: center">RPI Zero</th>
+      <th style="text-align: center">RPI 3 Model B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SoC</td>
+      <td style="text-align: center">Broadcom BCM2835</td>
+      <td style="text-align: center">Broadcom BCM2835</td>
+      <td style="text-align: center">Broadcom BCM2835</td>
+      <td style="text-align: center">Broadcom BCM2835</td>
+      <td style="text-align: center">Broadcom BCM2836</td>
+      <td style="text-align: center">Broadcom BCM2835</td>
+      <td style="text-align: center">BCM287</td>
+    </tr>
+    <tr>
+      <td>CPU</td>
+      <td style="text-align: center">ARMv6 700 MHz</td>
+      <td style="text-align: center">ARM11 ARMv6 700 MHz</td>
+      <td style="text-align: center">ARM11 ARMv6 700 MHz</td>
+      <td style="text-align: center">ARM11 ARMv6 700 MHz</td>
+      <td style="text-align: center">ARM11 ARMv7 ARM Cortex-A7 4 núcleos @ 900 MHz</td>
+      <td style="text-align: center">ARM11 ARMv6 Dual Core 1 GHz</td>
+      <td style="text-align: center">ARM cortex A53 1.2GHz 64bit 4 núcleos</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td style="text-align: center">Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td style="text-align: center">Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td style="text-align: center">Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td style="text-align: center">Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td style="text-align: center">Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td style="text-align: center">Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td style="text-align: center">Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+    </tr>
+    <tr>
+      <td>RAM</td>
+      <td style="text-align: center">256 MB LPDDR SDRAM 400 MHz</td>
+      <td style="text-align: center">256 MB LPDDR SDRAM 400 MHz</td>
+      <td style="text-align: center">512 MB LPDDR SDRAM 400 MHz</td>
+      <td style="text-align: center">512 MB LPDDR SDRAM 400 MHz</td>
+      <td style="text-align: center">1 GB LPDDR2 SDRAM 450 MHz</td>
+      <td style="text-align: center">512 MB LPDDR SDRAM 400 MHz</td>
+      <td style="text-align: center">1 GB LPDDR2 SDRAM 450 MHz</td>
+    </tr>
+    <tr>
+      <td>USB</td>
+      <td style="text-align: center">1 USB 2.0</td>
+      <td style="text-align: center">1 USB 2.0</td>
+      <td style="text-align: center">2 USB 2.0</td>
+      <td style="text-align: center">4 USB 2.0</td>
+      <td style="text-align: center">4 USB 2.0</td>
+      <td style="text-align: center">1 microUSB 2.0</td>
+      <td style="text-align: center">4 USB 2.0</td>
+    </tr>
+    <tr>
+      <td>Salidas de vídeo</td>
+      <td style="text-align: center">HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td style="text-align: center">HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td style="text-align: center">HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td style="text-align: center">HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td style="text-align: center">HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td style="text-align: center">mini-HDMI 1.4 @ 1920x1200 píxeles</td>
+      <td style="text-align: center">HDMI 1.4 @ 1920x1200 píxeles</td>
+    </tr>
+    <tr>
+      <td>Almacenamiento</td>
+      <td style="text-align: center">SD/MMC</td>
+      <td style="text-align: center">microSD</td>
+      <td style="text-align: center">SD/MMC</td>
+      <td style="text-align: center">microSD</td>
+      <td style="text-align: center">microSD</td>
+      <td style="text-align: center">microSD</td>
+      <td style="text-align: center">microSD</td>
+    </tr>
+    <tr>
+      <td>Ethernet</td>
+      <td style="text-align: center">No</td>
+      <td style="text-align: center">No</td>
+      <td style="text-align: center">Sí, 10/100 Mbps</td>
+      <td style="text-align: center">Sí, 10/100 Mbps</td>
+      <td style="text-align: center">Sí, 10/100 Mbps</td>
+      <td style="text-align: center">No</td>
+      <td style="text-align: center">10/100 Mbit/s Ethernet 802.11n wireless Bluetooth 4.1</td>
+    </tr>
+    <tr>
+      <td>Tamaño</td>
+      <td style="text-align: center">85,60mmx56,5 mm</td>
+      <td style="text-align: center">65mmx56,5 mm</td>
+      <td style="text-align: center">85,60mmx56,5 mm</td>
+      <td style="text-align: center">85,60mmx56,5 mm</td>
+      <td style="text-align: center">85,60mmx56,5 mm</td>
+      <td style="text-align: center">65mmx30mm</td>
+      <td style="text-align: center">85,60mmx56,5 mm</td>
+    </tr>
+    <tr>
+      <td>Peso</td>
+      <td style="text-align: center">45 g.</td>
+      <td style="text-align: center">23 g.</td>
+      <td style="text-align: center">45 g.</td>
+      <td style="text-align: center">45 g.</td>
+      <td style="text-align: center">45 g.</td>
+      <td style="text-align: center">9 g</td>
+      <td style="text-align: center">45g</td>
+    </tr>
+    <tr>
+      <td>Precio</td>
+      <td style="text-align: center">25 dólares</td>
+      <td style="text-align: center">20 dólares</td>
+      <td style="text-align: center">35 dólares</td>
+      <td style="text-align: center">35 dólares</td>
+      <td style="text-align: center">35 dólares</td>
+      <td style="text-align: center">5 dólares</td>
+      <td style="text-align: center">35 dólares</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="herramientas">Herramientas</h2>
+
+<h3 id="windows">Windows</h3>
+
+<ul>
+  <li>Win32DiskImager <a href="http://sourceforge.net/projects/win32diskimager/files/latest/download">(Descargar)</a></li>
+  <li>Putty <a href="https://the.earth.li/~sgtatham/putty/latest/x86/putty-0.67-installer.msi">(Descargar)</a></li>
+  <li>WinSCP <a href="https://winscp.net/eng/download.php#download2">(Descargar)</a></li>
+  <li>Advanced IP Scanner <a href="http://www.filehippo.com/download_advanced_ip_scanner/?utm_source=FT&amp;utm_medium=Redirect&amp;utm_campaign=AIS">(Descargar)</a></li>
+  <li>SDFormater <a href="https://www.sdcard.org/downloads/formatter_4/eula_windows/SDFormatterv4.zip">(Descargar)</a></li>
+</ul>
+
+<h3 id="linux">Linux</h3>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">sudo</span><span class="kv"> dd bs=4M if=/path/of/raspbian-image.img of=/dev/mmcblk0
+</span><span class="w">$ </span><span class="nc">sudo</span><span class="kv"> apt-get -y install nmap
+</span><span class="w">$ </span><span class="nc">sudo</span><span class="kv"> nmap -sn ip.of.red.0/24
+</span><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> pi@your.rpi.ip.address
+</span><span class="w">$ </span><span class="nc">scp</span><span class="kv"> your_archivo pi@your.rpi.ip.address:"/home/pi"
+</span></code></pre>
+</div>
+
+<h3 id="materiales">Materiales</h3>
+
+<ul>
+  <li>MicroSD</li>
+  <li>Cable ethernet</li>
+  <li>Fuente de 5V 2amp</li>
+  <li>Raspberry pi</li>
+  <li>PC</li>
+  <li>Software Putty</li>
+  <li>Cable HDMI(opcional)</li>
+  <li>Teclado(opcional)</li>
+  <li>Mouse(opcional)</li>
+  <li>Usb Wifi(opcional)</li>
+</ul>
+
+<h3 id="instalacion-de-so">Instalacion de SO</h3>
+
+<ol>
+  <li>SO Raspbian, descargarlo de la página oficial de Raspberry Pi desde <a href="https://www.raspberrypi.org/downloads/raspbian/">aquí</a></li>
+  <li>una memoría microSD de al menos 4Gb (recomiendo que sea de clase 10)</li>
+  <li>software para grabar el SO en la memoria microSD, en este caso optaremos por Win32DiskImager</li>
+</ol>
+
+<p>El usuario por defecto es <code class="highlighter-rouge">pi</code> y la contraseña <code class="highlighter-rouge">raspberry</code></p>
+
+<h3 id="primera-conexión">Primera conexión:</h3>
+
+<p>Formaremos una red local entre el Rpi y la PC para poder acceder a esta sin necesidad de una pantalla y teclado ni demás conectores.Los materiales que se necesitaremos son:</p>
+
+<p>Despues de grabar la memoría microSD con Raspbian, lo insertamos en la pc y vamos a editar el archivo cmdline.txt:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> pi@raspberrypi:~ $ nano boot/cmdline.txt
+ dwc_otg.lpm_enable=0 console=ttyAMA0,115200 &lt;...&gt; rootwait ip=your.rpi.ip.address
+</code></pre>
+</div>
+
+<p>Luego insertamos la memoria en el raspberry pi, y alimentamos la raspberry pi, en paralelo cambiamos la configuración de ethernet en nuestra PC con la siguiente configuración:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ip address: your.rpi.ip.another_address
+netmask: 255.255.255.0
+gateway: your.rpi.ip.address
+</code></pre>
+</div>
+
+<p>Y conectamos la Rpi con la PC mediante el cable ethernet, luego abrimos el programa Putty y colocaremos la ip del raspberry pi, aceptamos la llave SSH y colocamos el usuario:pi y la contraseña:raspberry cuando nos pidan. Luego de esto configuramos una mejor conexión ya sea cableada o inalámbrica.</p>
+
+<p>Desde <a href="https://www.raspberrypi.org/documentation/remote-access/ssh/">https://www.raspberrypi.org/documentation/remote-access/ssh/</a> :</p>
+
+<blockquote>
+  <p>As of the November 2016 release, Raspbian has the SSH server disabled by default.
+ You will have to enable it manually. This is done using raspi-config: 
+Enter sudo raspi-config in the terminal, first select Interfacing options, then navigate to  ssh, press
+Enter and select Enable or disable ssh server.
+For headless setup, SSH can be enabled by placing a file named ‘ssh’, without any extension, onto the boot partition of the SD card.</p>
+</blockquote>
+
+<p>Segun un aviso de la actualización, se removio el acceso ssh por defecto por lo que no se podrá seguir el manual para versiones posteriores a Noviembre del 2016.</p>
+
+<p>En los foros nos muestra una solución para la version Lite de raspbian. Primero debemos ingresar al archivo cmdline.txt añadir lo siguiente:</p>
+
+<p>Para poder habilitarlo debemos crear un archivo llamado ssh sin extensiones en la carpeta boot, esto habilitará dicho protócolo.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ip=192.168.1.200::192.168.1.1:255.255.255.0:rpi:eth0:off
+</code></pre>
+</div>
+<p>Esta estructuta tiene la forma:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>ip=&lt;client-ip&gt;:&lt;server-ip&gt;:&lt;gw-ip&gt;:&lt;netmask&gt;:&lt;hostname&gt;:&lt;device&gt;:&lt;autoconf&gt;
+</code></pre>
+</div>
+
+<p>En el caso de nuestra computadora debemos configurarlo como:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ip address: 192.168.1.xxx
+$ netmask: 255.255.255.0
+$ gateway: 192.168.1.1
+</code></pre>
+</div>
+
+<p><strong>Nota</strong>: La creación del archivo <strong><em>ssh</em></strong> habilta el protócolo ssh en 
+<strong><em>RASPBIAN JESSIE WITH PIXEL</em></strong> pero la configuración de ip estática genera que el boot no se complete.</p>
+
+<h4 id="cableadaip-dinámica">Cableada(IP Dinámica)</h4>
+
+<p>No editamos nada pero necesitaremos un software que escanee la red como Advanced IP Scanner donde buscaremos la red que tenga como fabricante a Raspberry Pi Foundation.</p>
+
+<h4 id="cableadaip-estática">Cableada(IP Estática)</h4>
+
+<p>Editamos el archivo interfaces:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo nano /etc/networks/interfaces
+</code></pre>
+</div>
+
+<p>y cambiamos a:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> auto eth0
+ #iface eth0 inet dhcp
+ iface eth0 inet static
+ address 192.168.1.11
+ netmask 255.255.255.0
+ gateway 192.168.1.1 #dirección ip del router
+</code></pre>
+</div>
+
+<h4 id="inalámbrica">Inalámbrica</h4>
+
+<p>Editamos el archivo wpa_supplicant.conf:&amp;nbsp:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+</code></pre>
+</div>
+<p>y cambiamos a:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>network={
+    ssid="Your ssid"
+    psk="your wifi password"
+}
+</code></pre>
+</div>
+
+<p>En ambos casos reiniciar la Rpi y conectarse ahora por el nuevo IP a través del cliente SSH, en nuestro caso Putty(en el caso de una red inalámbrica averigue su IP con Advanced IP Scanner )</p>
+
+<p>Si la Raspberry Pi tiene acceso a internet comprobamos si esta bien configurado con el siguiente comando:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ ping -c 3 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=45 time=173 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=45 time=180 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=45 time=172 ms
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 172.677/175.469/180.461/3.554 ms
+</code></pre>
+</div>
+
+<p>Y sino tendremos que configurar el DNS, para ello editamos el archivo /etc/resolv.conf</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo nano /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+</code></pre>
+</div>
+
+<h3 id="comandos-en-gnu-linux">Comandos en GNU-Linux</h3>
+
+<p>Algunos de los miles de comandos de linux!!!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comando</th>
+      <th>Función</th>
+      <th>Uso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>man</td>
+      <td>manual</td>
+      <td><code class="highlighter-rouge">$ man man</code></td>
+    </tr>
+    <tr>
+      <td>ls</td>
+      <td>ver los ficheros de un directorio</td>
+      <td><code class="highlighter-rouge">$ ls /home/pi</code></td>
+    </tr>
+    <tr>
+      <td>cd</td>
+      <td>Cambiar de directorio</td>
+      <td><code class="highlighter-rouge">$ cd ..</code></td>
+    </tr>
+    <tr>
+      <td>mv</td>
+      <td>Mover archivos</td>
+      <td><code class="highlighter-rouge">$ mv carpeta1 carpeta2</code></td>
+    </tr>
+    <tr>
+      <td>rm</td>
+      <td>Remover</td>
+      <td><code class="highlighter-rouge">$ rm archivo.txt</code></td>
+    </tr>
+    <tr>
+      <td>rmdir</td>
+      <td>remover directorio</td>
+      <td><code class="highlighter-rouge">$ rmdir carpeta</code></td>
+    </tr>
+    <tr>
+      <td>mkdir</td>
+      <td>Crear directorio</td>
+      <td><code class="highlighter-rouge">$ mkdir carpeta</code></td>
+    </tr>
+    <tr>
+      <td>cp</td>
+      <td>Copiar</td>
+      <td><code class="highlighter-rouge">$ cp archivo1.txt archivo2.txt</code></td>
+    </tr>
+    <tr>
+      <td>find</td>
+      <td>Buscar</td>
+      <td><code class="highlighter-rouge">$ find archivo.txt</code></td>
+    </tr>
+    <tr>
+      <td>locate</td>
+      <td>Localizar</td>
+      <td><code class="highlighter-rouge">$ locate archivo.txt</code></td>
+    </tr>
+    <tr>
+      <td>shutdown</td>
+      <td>Apagar el sistema</td>
+      <td><code class="highlighter-rouge">$ shutdown -h now</code></td>
+    </tr>
+    <tr>
+      <td>reboot</td>
+      <td>Reiniciar</td>
+      <td><code class="highlighter-rouge">$ reboot</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="uso-del-editor-nano">Uso del editor Nano</h2>
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>nano name_of_file
+</code></pre>
+</div>
+
+<h2 id="raspi-config">raspi-config</h2>
+
+<p>La herramienta Raspi-config le ayuda a configurar su Raspberry Pi; varios ajustes se pueden cambiar con esta herramienta sin tener que conocer los comandos correctos para su uso.</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">sudo</span><span class="kv"> raspi-config
+</span></code></pre>
+</div>
+
+<p><img src="/images/intro/raspi-config.png" width="400" /></p>
+
+<h2 id="escritorio-remoto-vnc">Escritorio Remoto: VNC</h2>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">sudo</span><span class="kv"> apt-get install tightvncserver
+</span><span class="w">$ </span><span class="nc">vncserver</span><span class="kv"> :1 -geometry 1280x800 -depth 16 -pixelformat rgb565
+</span></code></pre>
+</div>
+
+<p>Para windows descargar desde <a href="https://www.realvnc.com/download/binary/1795/">aquí</a></p>
+
+<p>Para linux instalar:</p>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo apt-get -y install 
+</code></pre>
+</div>
+
+<p>ingresar con <strong>your.rpi.ip.address:1</strong></p>
+
+<h2 id="editor-remoto-sublime">Editor remoto: Sublime</h2>
+
+<p>Usar la terminal para editar no es amigable, por ello recurrimos a esta gran utilidad.</p>
+
+<h3 id="instalar-sublime">Instalar sublime</h3>
+
+<ol>
+  <li>Instalar sublime desde <a href="https://download.sublimetext.com/Sublime%20Text%202.0.2a%20x64%20Setup.exe">aquí</a></li>
+  <li>Instalar Package Control
+ Ejecutar View/Console y pegar
+    <div class="language-perl highlighter-rouge"><pre class="highlight"><code><span class="nb">import</span> <span class="nv">urllib2</span><span class="p">,</span><span class="nv">os</span><span class="p">,</span><span class="nv">hashlib</span><span class="p">;</span> <span class="nv">h</span> <span class="o">=</span> <span class="s">'2915d1851351e5ee549c20394736b442'</span> <span class="o">+</span> <span class="s">'8bc59f460fa1548d1514676163dafc88'</span><span class="p">;</span> <span class="nv">pf</span> <span class="o">=</span> <span class="s">'Package Control.sublime-package'</span><span class="p">;</span> <span class="nv">ipp</span> <span class="o">=</span> <span class="nv">sublime</span><span class="o">.</span><span class="nv">installed_packages_path</span><span class="p">();</span> <span class="nv">os</span><span class="o">.</span><span class="nv">makedirs</span><span class="p">(</span> <span class="nv">ipp</span> <span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nv">os</span><span class="o">.</span><span class="nv">path</span><span class="o">.</span><span class="nb">exists</span><span class="p">(</span><span class="nv">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="nv">None</span><span class="p">;</span> <span class="nv">urllib2</span><span class="o">.</span><span class="nv">install_opener</span><span class="p">(</span> <span class="nv">urllib2</span><span class="o">.</span><span class="nv">build_opener</span><span class="p">(</span> <span class="nv">urllib2</span><span class="o">.</span><span class="nv">ProxyHandler</span><span class="p">())</span> <span class="p">);</span> <span class="nv">by</span> <span class="o">=</span> <span class="nv">urllib2</span><span class="o">.</span><span class="nv">urlopen</span><span class="p">(</span> <span class="s">'http://packagecontrol.io/'</span> <span class="o">+</span> <span class="nv">pf</span><span class="o">.</span><span class="nv">replace</span><span class="p">(</span><span class="s">' '</span><span class="p">,</span> <span class="s">'%20'</span><span class="p">))</span><span class="o">.</span><span class="nb">read</span><span class="p">();</span> <span class="nv">dh</span> <span class="o">=</span> <span class="nv">hashlib</span><span class="o">.</span><span class="nv">sha256</span><span class="p">(</span><span class="nv">by</span><span class="p">)</span><span class="o">.</span><span class="nv">hexdigest</span><span class="p">();</span> <span class="nb">open</span><span class="p">(</span> <span class="nv">os</span><span class="o">.</span><span class="nv">path</span><span class="o">.</span><span class="nb">join</span><span class="p">(</span> <span class="nv">ipp</span><span class="p">,</span> <span class="nv">pf</span><span class="p">),</span> <span class="s">'wb'</span> <span class="p">)</span><span class="o">.</span><span class="nb">write</span><span class="p">(</span><span class="nv">by</span><span class="p">)</span> <span class="k">if</span> <span class="nv">dh</span> <span class="o">==</span> <span class="nv">h</span> <span class="k">else</span> <span class="nv">None</span><span class="p">;</span> <span class="k">print</span><span class="p">(</span><span class="s">'Error validating download (got %s instead of %s), please try manual install'</span> <span class="nv">%</span> <span class="err">(</span><span class="nv">dh</span><span class="p">,</span> <span class="nv">h</span><span class="p">)</span> <span class="k">if</span> <span class="nv">dh</span> <span class="o">!=</span> <span class="nv">h</span> <span class="k">else</span> <span class="s">'Please restart Sublime Text to finish installation'</span><span class="p">)</span>
+</code></pre>
+    </div>
+  </li>
+  <li>Ejecutar ctrl-shift-p, escribir install y seleccionar rsub</li>
+</ol>
+
+<h3 id="instalar-rmate">Instalar rmate</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ <span class="nv">$ </span>sudo wget -O /usr/local/bin/rsub https://raw.github.com/aurora/rmate/master/rmate
+pi@raspberrypi:~ <span class="nv">$ </span>sudo chmod +x /usr/local/bin/rsub
+</code></pre>
+</div>
+
+<h3 id="configurar-putty">Configurar Putty</h3>
+
+<ol>
+  <li>Ejecutar como administrador putty</li>
+  <li>Seleccionar Connection/SSH/tunnels</li>
+  <li>Colocar en <strong>Source port</strong>: 52698, en <strong>Destination</strong>:127.0.0.1:52698 y seleccionar <strong>Remote</strong></li>
+</ol>
+
+<h3 id="uso">USO</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ <span class="nv">$ </span>rsub your_file
+</code></pre>
+</div>
+
+<h3 id="resumen">Resumen</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@raspberrypi:~ $ sudo apt-get update
+pi@raspberrypi:~ $ sudo apt-get upgrade
+pi@raspberrypi:~ $ sudo apt-get install -y tree
+pi@raspberrypi:~ $ sudo apt-get install -y mlocate
+pi@raspberrypi:~ $ sudo updatedb
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+</section>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container footer-content">
+    Hecho <i class ="fa fa-heart"></i> por eyllanesc<br>
+    Desarrollado con Jekyll
+  </div>
+</nav>
+
+  </body>
+
+</html>
