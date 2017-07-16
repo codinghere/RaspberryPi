@@ -6,7 +6,8 @@ categories: Raspberry
 author: "eyllanesc"
 ---
 
-![]({{ site.baseurl }}/images/intro/anio.jpg)
+<img class="img-responsive" style="margin:0 auto;" src="{{ site.baseurl }}/images/intro/anio.jpg">
+
 
 
 ##	¿Qué es un Raspberry pi?
@@ -15,7 +16,7 @@ author: "eyllanesc"
 2. Nació para estimular la enseñanza de ciencias de la computación en las escuelas del Reino Unido( plataforma educativa).
 3. Actualmente es una plataforma de desarrollo.
 
-<img class="img-responsive" src="{{ site.baseurl }}/images/intro/proyectos.jpg" height="400" style="width:100%">
+<img class="img-responsive" src="{{ site.baseurl }}/images/intro/proyectos.jpg" style="width:100%">
 
 ## Recursos
 
@@ -61,15 +62,8 @@ author: "eyllanesc"
 <img  src="{{ site.baseurl }}/images/intro/model3.jpg" width="500" alt=""/>
 
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
-</style>
 
-<table class="table table-responsive table-bordered">
+<table class="table table-responsive table-bordered table-striped">
   <thead>
     <tr>
       <th>#</th>
@@ -106,7 +100,7 @@ author: "eyllanesc"
 
     <tr>
       <th>RAM</th>
-      <td colspan="4" >Broadcom VideoCore IV 250 MHz. OpenGL ES 2.0</td>
+      <td colspan="4" >256 MB LPDDR SDRAM 400 MHz</td>
       <td>1 GB LPDDR2 SDRAM 450 MHz</td>
       <td>512 MB LPDDR SDRAM 400 MHz</td>
       <td>1 GB LPDDR2 SDRAM 450 MHz</td>

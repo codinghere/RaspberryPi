@@ -28,11 +28,11 @@
 .footer-content{
   text-align: center;
   padding: 0.5em;
+  color: white !important;
 }
 body{
-  background-color: #120539 !important;
-  font-family: "Fira Mono" !important;
-  color: #f8f8f8 !important;
+  background-color: #FBFAF7;
+  color: #f8f8f8;
 }
 .page-stuff{
   a {
@@ -55,7 +55,7 @@ body{
   padding-bottom: 5em;
 }
 .jumbotron {
-  background: #FFC600 !important;
+  background: #31708f !important;
 }
 a {
     color: #FFC600;
@@ -67,6 +67,16 @@ a:hover{
   border-bottom: 1px dotted #FFC600;
 
 }
+
+/* Images */
+img { position: relative; margin: 0 auto; max-width: 650px; padding: 5px; margin: 10px 0 32px 0; border: 1px solid #ccc; }
+
+p img { 
+
+display: inline ;
+
+margin: 0 !important; padding: 0; vertical-align: middle; text-align: center; border: none; }
+
 
 .post-list{
 
@@ -92,8 +102,17 @@ padding-bottom: 2em;
    text-align: center;   
 }
 
+.table {
+	table-layout: fixed;
+	word-wrap: break-word;
+}
+
+.table th, table td {
+    overflow: hidden;
+}
+
 .post-excerpt{
-  color: white !important;
+color: black !important;
 padding-top: 0.5em;
 padding-bottom: 0.3em;
 font-size: 18px !important;
@@ -107,24 +126,46 @@ font-size: 18px !important;
   text-align: justify;
   padding-bottom: 5em;
 }
-pre{
-background-color: black !important;
-border:none !important;
-border-radius: 0px !important;
-font-size: 20px !important;
-padding: 1em !important;
-color:white !important;
+
+.container{
+	width: 70% !important;
 }
+
 .post-meta{
   color: #f8f8f8 !important;
 }
 
-code{
-  background-color: #FFFFFF !important;
-  color: black !important;
-  //border: none !important;
-  border-radius: 0px !important;
+/* Code blocks */
+code, pre { 
+	font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace !important; 
+	color: #000 !important; 
+	font-size: 14px !important; 
 }
+
+pre { 
+	padding: 4px 12px !important; 
+
+	background: #FDFEFB !important;
+
+	border-radius: 4px !important; 
+
+	border: 1px solid #D7D8C8 !important; 
+	overflow: auto !important; 
+	overflow-y: hidden !important; 
+	margin-bottom: 32px !important; 
+}
+
+/*pre{
+	background: rgba(255, 255, 255, 1) !important;
+	font-size: 16px !important;
+}
+
+code{
+  background-color: rgba(255, 255, 255, 1) !important;
+  background: rgba(255, 255, 255, 1) !important;
+  //border-radius: 0px !important;
+}
+*/
 
 .page-tagline{
   font-size: 20px;
@@ -165,7 +206,7 @@ text-align: center;
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
 }
 // Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+//$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-size:   18px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
@@ -182,11 +223,10 @@ $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
-$content-width:    600px;
+$content-width:    400px;
 
 $on-palm:          500px;
 $on-laptop:        600px;
-
 
 
 // Use media queries like this:
@@ -208,4 +248,3 @@ $on-laptop:        600px;
 @import
         "syntax-highlighting"
 ;
-
